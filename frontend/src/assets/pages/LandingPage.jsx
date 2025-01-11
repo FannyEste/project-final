@@ -6,7 +6,7 @@ const LandingPage = () => {
       <h1>Landing Page</h1>
       <p>Welcome to Hormonice!</p>
       <nav>
-        <Link to="/login">Go to Login</Link> | <Link to="/dashboard">Go to Dashboard</Link>
+        <Link to="/login">Go to Login</Link> | <Link to="/signup">Sign Up</Link>
       </nav>
     </div>
   );

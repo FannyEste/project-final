@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const App = () => {
-  return <h1>Hello, Vite! This is a fresh start.</h1>;
-};
+console.log("React runtime version:", React.version);
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+import { BrowserRouter as Router } from "react-router-dom"; // Importing React Router
+import App from "./App"; // Importing the App component as the main structure of your app
 
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>
+);

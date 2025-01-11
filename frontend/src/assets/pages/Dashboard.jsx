@@ -1,5 +1,5 @@
 // src/pages/Dashboard.jsx
-import UserGreeting from "../components/UserGreeting";
+import UserGreeting from "../../components/UserGreeting";
 
 const Dashboard = () => {
   return (
