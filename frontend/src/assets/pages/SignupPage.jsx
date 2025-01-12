@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -19,6 +23,10 @@ const SignupPage = () => {
 
       if (response.ok) {
         console.log("User registered successfully!");
+        navigate("/login");
+      } else if (response.status === 400) {
+        console.error("User already exists");
+        alert("A user with this email already exists. Please use a different email.");     
       } else {
         console.error("Error registering user");
       }

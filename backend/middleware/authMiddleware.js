@@ -6,6 +6,7 @@ export const protect = (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
+  console.log("Error occurred in login route:", error);
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
