@@ -1,19 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BoxGrid from "../../components/BoxGrid"; // Import the BoxGrid component
+import "./LandingPage.css"; // Import CSS for the hero image and page styles
+import HeroImage from "../../assets/hero-test.svg"; // Import the hero image (adjust the path if needed)
+
 
 const LandingPage = () => {
   return (
     <div>
-      <h1>Landing Page</h1>
-      <p>Welcome to Hormonice!</p>
-      
-      {/* Navigation Links */}
-      <nav>
-        <Link to="/login">Go to Login</Link> | <Link to="/signup">Sign Up</Link>
-      </nav>
-      
-      {/* BoxGrid Component */}
+      {/* Hero Section */}
+      <div className="hero-section">
+        <img src={HeroImage} alt="Hero" className="hero-image" />
+        <div className="hero-text">
+          <h1>Welcome to Hormonice</h1>
+          <p>Track your cycles and embrace your wellness journey.</p>
+          <Link to="/signup" className="hero-button">
+            Get Started
+          </Link>
+        </div>
+      </div>
+
+      {/* BoxGrid Section */}
       <BoxGrid />
     </div>
   );
