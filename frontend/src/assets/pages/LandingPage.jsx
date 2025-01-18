@@ -12,8 +12,8 @@ const LandingPage = () => {
       <div className="hero-section">
         <img src={HeroImage} alt="Hero" className="hero-image" />
         <div className="hero-text">
-          <h1>Welcome to Hormonice</h1>
-          <p>Track your cycles and embrace your wellness journey.</p>
+          <h1>WELCOME TO HORMONAL HEAVEN</h1>
+          <p>SAFE SPACE. MESSY THOUGHTS. REAL TALK.</p>
           <Link to="/signup" className="hero-button">
             Get Started
           </Link>
