@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../context/userStore";
+import "./LoginPage.css"; // Import CSS for styling
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Icons for password toggle
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
   const setUser = useUserStore((state) => state.setUser);
   const navigate = useNavigate();
 
@@ -33,30 +36,37 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          Email:
+    <div className="login-container">
+      <h1 className="login-title">Login</h1>
+      <form onSubmit={handleLogin} className="login-form">
+        <label className="login-label">Email</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="login-input"
+        />
+        <label className="login-label">Password</label>
+        <div className="password-container">
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="login-input password-input"
           />
-        </label>
-        <br />
-        <button type="submit">Login</button>
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
+        </div>
+        <button type="submit" className="login-button">
+          Login
+        </button>
       </form>
     </div>
   );

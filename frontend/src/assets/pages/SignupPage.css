@@ -1,0 +1,126 @@
+/* Signup Page Container */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #D5C1DE; /* Light pink background */
+  font-family: "Poppins", sans-serif; /* Use Poppins font */
+}
+
+/* Title */
+.signup-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #66489D; 
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px; /* Centered and responsive */
+}
+
+/* Label */
+.signup-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #66489D; 
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Input Fields */
+.signup-input {
+  font-size: 1rem;
+  border: none; /* Remove the box */
+  border-bottom: 2px solid #66489D; /* Add underline */
+  background-color: transparent; /* Transparent background */
+  color: #333; /* Input text color */
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.3s ease;
+}
+
+/* Focus state for input */
+.signup-input:focus {
+  border-bottom: 2px solid #453766; /* Darker red on focus */
+}
+
+/* Password Field Container */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input {
+  flex: 1; /* Make the input take up available space */
+}
+
+/* Eye Icon for Password Toggle */
+.password-toggle {
+  position: absolute;
+  right: 0; /* Align the icon to the right */
+  top: top;
+  transform: translateY(-50%); /* Center vertically */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #66489D; /* Match the theme color */
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: #453766; /* Slightly darker color on hover */
+}
+
+/* Button */
+.signup-button {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #66489D;
+  border: 2px solid #66489D; /* Outline matches theme */
+  background-color: transparent;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 1rem;
+}
+
+.signup-button:hover {
+  background-color: #66489D; /* Soft red fill on hover */
+  color: white;
+}
+
+/* Footer */
+.signup-footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #66489D;
+  text-align: center;
+}
+
+.signup-link {
+  color: #453766;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.signup-link:hover {
+  color: #453766;
+}
