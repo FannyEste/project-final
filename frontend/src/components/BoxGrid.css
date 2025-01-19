@@ -1,64 +1,56 @@
-/* Grid Container */
+/* Cycles Section */
+.cycles-section {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #f9f9f9; /* Light gray background for contrast */
+}
+
+/* Section Title */
+.cycles-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #66489D; /* Soft red */
+  margin-bottom: 2rem;
+  font-family: "Poppins", sans-serif; /* Match global font */
+}
+
+/* Box Grid */
 .box-grid {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
-    grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
-  }
-  
-  /* Box Styling */
-  .box {
-    position: relative;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-  }
-  
-  .box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Image Styling */
-  .box-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-bottom: 4px solid #ddd;
-  }
-  
-  /* Title Styling */
-  .box-title {
-    margin: 0;
-    padding: 1rem;
-    font-size: 1.25rem;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  /* Responsive Breakpoints */
-  
-  /* 3 Columns for Screens ≥1024px */
-  @media (max-width: 1200px) {
-    .box-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  /* 2 Columns for Screens ≥768px */
-  @media (max-width: 1024px) {
-    .box-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  /* 1 Column for Screens <768px */
-  @media (max-width: 768px) {
-    .box-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Individual Box */
+.box {
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Box Image */
+.box-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+/* Box Title */
+.box-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 0.5rem;
+}

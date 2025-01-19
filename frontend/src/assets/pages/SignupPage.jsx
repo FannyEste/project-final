@@ -70,7 +70,7 @@ const SignupPage = () => {
             className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
           </button>
         </div>
         <button type="submit" className="signup-button">
