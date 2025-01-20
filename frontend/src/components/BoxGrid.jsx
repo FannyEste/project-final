@@ -1,30 +1,36 @@
 import React from "react";
 import "./BoxGrid.css";
-import TestImage from "../assets/test-image.svg";
+import { Link } from "react-router-dom";
+
+import FollicularIcon from "../assets/follicular-icon.svg";
+import OvulatoryIcon from "../assets/ovulatory-icon.svg";
+import LutealIcon from "../assets/luteal-icon.svg";
+import MenstrualIcon from "../assets/menstrual-icon.svg";
 
 const BoxGrid = () => {
   const phases = [
-    { name: "FOLLICULAR", image: TestImage },
-    { name: "OVULATORY", image: TestImage },
-    { name: "LUTEAL", image: TestImage },
-    { name: "MENSTRUAL", image: TestImage },
+    { name: "FOLLICULAR", link: "/cycles/follicular", color: "#E5D4F6", icon: FollicularIcon },
+    { name: "OVULATORY", link: "/cycles/ovulatory", color: "#FFD59E", icon: OvulatoryIcon },
+    { name: "LUTEAL", link: "/cycles/luteal", color: "#B49DD9", icon: LutealIcon },
+    { name: "MENSTRUAL", link: "/cycles/menstrual", color: "#B49DD9", icon: MenstrualIcon },
   ];
 
   return (
-    <section className="cycles-section">
-      {/* Section Title */}
-      <h2 className="cycles-title">What phase of your cycle are you in?</h2>
-      
-      {/* Grid of Boxes */}
+    <div className="cycles-section">
+      <h2 className="cycles-title">First things first: Know your cycle</h2>
       <div className="box-grid">
         {phases.map((phase) => (
-          <div key={phase.name} className="box">
-            <img src={phase.image} alt={phase.name} className="box-image" />
-            <h3 className="box-title">{phase.name}</h3>
-          </div>
+          <Link to={phase.link} key={phase.name}>
+            <div className="box">
+              <div className="circle" style={{ backgroundColor: phase.color }}>
+                <img src={phase.icon} alt={`${phase.name} Icon`} className="hover-icon" />
+              </div>
+              <h3 className="box-title">{phase.name}</h3>
+            </div>
+          </Link>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

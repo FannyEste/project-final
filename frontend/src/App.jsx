@@ -1,23 +1,23 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/NavBar"; // Import Navbar
+import Navbar from "./components/NavBar";
 import LandingPage from "./assets/pages/LandingPage";
 import LoginPage from "./assets/pages/LoginPage";
 import SignupPage from "./assets/pages/SignupPage";
 import Dashboard from "./assets/pages/Dashboard";
+import FollicularPage from "./assets/pages/FollicularPage";
+import OvulatoryPage from "./assets/pages/OvulatoryPage";
+import LutealPage from "./assets/pages/LutealPage";
+import MenstrualPage from "./assets/pages/MenstrualPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
     <>
-      {/* Navbar always visible */}
       <Navbar />
-      
-      {/* Routes */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        {/* Wrap Dashboard with ProtectedRoute */}
         <Route
           path="/dashboard"
           element={
@@ -26,6 +26,11 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        {/* Cycle Pages */}
+        <Route path="/cycles/follicular" element={<FollicularPage />} />
+        <Route path="/cycles/ovulatory" element={<OvulatoryPage />} />
+        <Route path="/cycles/luteal" element={<LutealPage />} />
+        <Route path="/cycles/menstrual" element={<MenstrualPage />} />
       </Routes>
     </>
   );
