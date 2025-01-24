@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import router from "./routes/endPoint.js";
+import userRoutes from "./routes/endPoint.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import dotenv from "dotenv";
-
 
 dotenv.config();
 
@@ -17,7 +17,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/users", router);
+// Routes for user-related actions
+app.use("/api/users", userRoutes);
+
+// Protected dashboard route
+app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello Technigo!");

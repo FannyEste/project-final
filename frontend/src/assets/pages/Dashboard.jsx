@@ -1,22 +1,54 @@
-import React from "react";
-import { useUserStore } from "../../context/userStore";
-import LogoutButton from "../../components/LogoutButton";
-import "./Dashboard.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Dashboard = () => {
-  const user = useUserStore((state) => state.user);
+  const [user, setUser] = useState(null); // User state
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("token"); // Retrieve token
+        const response = await axios.get("/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send token for authentication
+          },
+        });
+        setUser(response.data); // Set user data
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+        setError("Failed to load user data.");
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading your profile...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
-    <div className="dashboard-container">
-      <h1 className="dashboard-title">Dashboard</h1>
-      {user ? (
-        <div className="dashboard-content">
-          <p className="dashboard-welcome">Welcome, <span className="dashboard-username">{user.name}</span>!</p>
-          <LogoutButton />
-        </div>
-      ) : (
-        <p className="dashboard-loading">Loading user data...</p>
-      )}
+    <div className="dashboard">
+      <h1>Welcome, {user.name}!</h1>
+      <p>Your email: {user.email}</p>
+      <button
+        onClick={() => {
+          localStorage.removeItem("token"); // Log out by clearing token
+          navigate("/login");
+        }}
+      >
+        Log Out
+      </button>
     </div>
   );
 };

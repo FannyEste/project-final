@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignupPage.css"; // Import the CSS file
+// src/index.js or src/App.jsx
+import './styles/Global.css';
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import the icons from react-icons
+
 
 const SignupPage = () => {
   const [name, setName] = useState("");

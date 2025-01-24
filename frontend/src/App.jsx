@@ -10,6 +10,7 @@ import LutealPage from "./assets/pages/LutealPage";
 import MenstrualPage from "./assets/pages/MenstrualPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
 const App = () => {
   return (
     <>
