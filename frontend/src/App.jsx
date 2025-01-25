@@ -9,6 +9,7 @@ import OvulatoryPage from "./assets/pages/OvulatoryPage";
 import LutealPage from "./assets/pages/LutealPage";
 import MenstrualPage from "./assets/pages/MenstrualPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import "./index.css"; // Update this path to match your CSS file
 
 
 const App = () => {

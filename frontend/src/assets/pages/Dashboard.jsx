@@ -12,20 +12,25 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem("token"); // Retrieve token
-        const response = await axios.get("/profile", {
+        const token = localStorage.getItem("token");
+        console.log("Token being sent:", token);
+    
+        const response = await axios.get("http://localhost:8080/api/dashboard", {
           headers: {
-            Authorization: `Bearer ${token}`, // Send token for authentication
+            Authorization: `Bearer ${token}`,
           },
         });
-        setUser(response.data); // Set user data
+        console.log("Response data:", response.data);
+    
+        setUser(response.data);
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching user data:", err);
+        console.error("Error fetching user data:", err.response || err.message);
         setError("Failed to load user data.");
         setLoading(false);
       }
     };
+    
 
     fetchUserData();
   }, []);

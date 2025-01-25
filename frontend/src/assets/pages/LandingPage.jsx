@@ -1,19 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BoxGrid from "../../components/BoxGrid"; // Import the BoxGrid component
-import "./LandingPage.css"; 
-import HeroImage from "../../assets/hero-test.svg"; // Import the hero image (adjust the path if needed)
-
+import HeroImage from "../../assets/hero-test.svg";
+import BoxGrid from "../../components/BoxGrid";
+import "./LandingPage.css"; // Your custom CSS file
 
 const LandingPage = () => {
   return (
     <div>
       {/* Hero Section */}
       <div className="hero-section">
-        <img src={HeroImage} alt="Hero" className="hero-image" />
+        <img
+          src={HeroImage}
+          alt="Hero"
+          className="hero-image"
+        />
         <div className="hero-text">
-          <h1>WELCOME TO HORMONAL HEAVEN</h1>
-          <p>SAFE SPACE. MESSY THOUGHTS. REAL TALK.</p>
+          <h1 className="hero-title">
+            WELCOME TO HORMONAL HEAVEN
+          </h1>
+          <p className="hero-subtitle">
+            SAFE SPACE. MESSY THOUGHTS. REAL TALK.
+          </p>
           <Link to="/signup" className="hero-button">
             Get Started
           </Link>
@@ -21,7 +28,9 @@ const LandingPage = () => {
       </div>
 
       {/* BoxGrid Section */}
-      <BoxGrid />
+      <div className="boxgrid-container">
+        <BoxGrid />
+      </div>
     </div>
   );
 };

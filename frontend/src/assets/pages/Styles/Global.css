@@ -4,16 +4,16 @@
 import "tailwindcss/preflif"
 @tailwind utilities; */
 
-@import "tailwindcss";
 
-/* Reset */
+
+/* Reset 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Variables */
+/* Variables 
 :root {
   --primary-color: #66489D;
   --secondary-color: #D5C1DE;
@@ -23,7 +23,7 @@ import "tailwindcss/preflif"
   --border-color: #D5C1DE;
 }
 
-/* Global Styles */
+/* Global Styles 
 body {
   font-family: var(--font-family);
   background-color: var(--background-color);
@@ -31,7 +31,7 @@ body {
   line-height: 1.6;
 }
 
-/* Utility Classes */
+/* Utility Classes 
 .section {
   padding: 5rem 1rem;
   background-color: var(--background-color);
@@ -78,7 +78,7 @@ body {
   color: white;
 }
 
-/* Navbar Container */
+/* Navbar Container 
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -88,13 +88,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo */
+/* Logo 
 .navbar-logo img {
   height: 40px;
   cursor: pointer;
 }
 
-/* Menu Links */
+/* Menu Links 
 .navbar-menu {
   display: flex;
   align-items: center;
@@ -113,7 +113,7 @@ body {
   text-decoration: underline;
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu 
 .navbar-dropdown {
   position: relative;
 }
@@ -146,7 +146,7 @@ body {
   text-decoration: underline;
 }
 
-/* Search Bar */
+/* Search Bar 
 .navbar-search {
   display: flex;
   align-items: center;
@@ -166,7 +166,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* Login Icon */
+/* Login Icon 
 .navbar-login {
   cursor: pointer;
   font-size: 1.5rem;
@@ -174,17 +174,17 @@ body {
 
 /* ... Other styles omitted for brevity */
 
-/* Forms (Signup Page) */
+/* Forms (Signup Page) 
 .signup-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #D5C1DE; /* Light pink background */
+  background-color: #D5C1DE; /* Light pink background 
   font-family: "Poppins", sans-serif; /* Use Poppins font */
 }
-/* Title */
+/* Title 
 .signup-title {
   font-size: 2rem;
   font-weight: 600;
@@ -192,14 +192,14 @@ body {
   margin-bottom: 2rem;
   text-align: center;
 }
-/* Form */
+/* Form 
 .signup-form {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 400px; /* Centered and responsive */
 }
-/* Label */
+/* Label 
 .signup-label {
   font-size: 0.9rem;
   font-weight: 600;
@@ -208,42 +208,42 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-/* Input Fields */
+/* Input Fields 
 .signup-input {
   font-size: 1rem;
-  border: none; /* Remove the box */
-  border-bottom: 2px solid #66489D; /* Add underline */
-  background-color: transparent; /* Transparent background */
-  color: #333; /* Input text color */
+  border: none; /* Remove the box 
+  border-bottom: 2px solid #66489D; /* Add underline 
+  background-color: transparent; /* Transparent background 
+  color: #333; /* Input text color 
   padding: 0.5rem 0;
   margin-bottom: 2rem;
-  outline: none; /* Remove default outline */
+  outline: none; /* Remove default outline 
   transition: border-color 0.3s ease;
 }
-/* Focus state for input */
+/* Focus state for input 
 .signup-input:focus {
-  border-bottom: 2px solid #453766; /* Darker red on focus */
+  border-bottom: 2px solid #453766; /* Darker red on focus 
 }
-/* Password Field Container */
+/* Password Field Container 
 .password-container {
   position: relative;
   display: flex;
   align-items: center;
 }
 .password-input {
-  flex: 1; /* Make the input take up available space */
+  flex: 1; /* Make the input take up available space 
 }
-/* Eye Icon for Password Toggle */
+/* Eye Icon for Password Toggle 
 .password-toggle {
   position: absolute;
-  right: 0; /* Align the icon to the right */
+  right: 0; /* Align the icon to the right 
   top: top;
-  transform: translateY(-50%); /* Center vertically */
+  transform: translateY(-50%); /* Center vertically 
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
-  color: #66489D; /* Match the theme color */
+  color: #66489D; /* Match the theme color 
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -251,14 +251,14 @@ body {
   transition: color 0.3s ease;
 }
 .password-toggle:hover {
-  color: #453766; /* Slightly darker color on hover */
+  color: #453766; /* Slightly darker color on hover 
 }
-/* Button */
+/* Button 
 .signup-button {
   font-size: 1rem;
   font-weight: 600;
   color: #66489D;
-  border: 2px solid #66489D; /* Outline matches theme */
+  border: 2px solid #66489D; /* Outline matches theme 
   background-color: transparent;
   padding: 0.8rem 1rem;
   border-radius: 4px;
@@ -267,10 +267,10 @@ body {
   margin-top: 1rem;
 }
 .signup-button:hover {
-  background-color: #66489D; /* Soft red fill on hover */
+  background-color: #66489D; /* Soft red fill on hover 
   color: white;
 }
-/* Footer */
+/* Footer 
 .signup-footer {
   margin-top: 1rem;
   font-size: 0.9rem;
@@ -287,7 +287,7 @@ body {
   color: #453766;
 }
 
-/* Responsive */
+/* Responsive 
 @media (max-width: 768px) {
   .signup-form {
     max-width: 90%;
@@ -298,18 +298,18 @@ body {
   }
 }
 
-/*LOGIN COMPONENT*/
+/*LOGIN COMPONENT
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #D5C1DE; /* Light pink background */
+  background-color: #D5C1DE; /* Light pink background 
   font-family: "Poppins", sans-serif;
 }
 
-/* Title */
+/* Title 
 .login-title {
   font-size: 2rem;
   font-weight: 600;
@@ -318,15 +318,15 @@ body {
   text-align: center;
 }
 
-/* Form */
+/* Form 
 .login-form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px; /* Centered and responsive */
+  max-width: 400px; /* Centered and responsive 
 }
 
-/* Label */
+/* Label 
 .login-label {
   font-size: 0.9rem;
   font-weight: 600;
@@ -336,16 +336,16 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* Input Fields */
+/* Input Fields 
 .login-input {
   font-size: 1rem;
-  border: none; /* Remove the box */
+  border: none; /* Remove the box 
   border-bottom: 2px solid #66489D;
-  background-color: transparent; /* Transparent background */
-  color: #333; /* Input text color */
+  background-color: transparent; /* Transparent background 
+  color: #333; /* Input text color 
   padding: 0.5rem 0;
   margin-bottom: 2rem;
-  outline: none; /* Remove default outline */
+  outline: none; /* Remove default outline 
   transition: border-color 0.3s ease;
 }
 
@@ -353,7 +353,7 @@ body {
   border-bottom: 2px solid #453766; 
 }
 
-/* Password Field Container */
+/* Password Field Container 
 .password-container {
   position: relative;
   display: flex;
@@ -364,7 +364,7 @@ body {
   flex: 1;
 }
 
-/* Password Toggle Icon */
+/* Password Toggle Icon 
 .password-toggle {
   position: absolute;
   right: 0;
@@ -386,7 +386,7 @@ body {
   color: #453766;
 }
 
-/*DADSHBOARD CONTAINER*/
+/*DADSHBOARD CONTAINER
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -397,7 +397,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* Title */
+/* Title 
 .dashboard-title {
   font-size: 2.5rem;
   font-weight: 600;
@@ -406,17 +406,17 @@ body {
   text-align: center;
 }
 
-/* Content Section */
+/* Content Section 
 .dashboard-content {
   text-align: center;
 }
 
-/* Welcome Text */
+/* Welcome Text 
 .dashboard-welcome {
   font-size: 1.6rem;
   color: white;
   margin-bottom: 2rem;
-  font-weight: 900; /* Increased font weight for a thicker appearance */
+  font-weight: 900; Increased font weight for a thicker appearance 
 }
   
 .dashboard-username {
@@ -424,13 +424,13 @@ body {
   color: #66489D; 
 }
 
-/* Loading Text */
+/* Loading Text 
 .dashboard-loading {
   font-size: 1.2rem;
   color: #453766; 
 }
 
-/* Logout Button */
+/* Logout Button 
 button {
   font-size: 1rem;
   font-weight: 600;
@@ -449,7 +449,7 @@ button:hover {
 }
 
 
-/* Button */
+/* Button 
 .login-button {
   font-size: 1rem;
   font-weight: 600;
@@ -469,50 +469,50 @@ button:hover {
   color: white;
 }
 
-/* Grid container for the boxes */
+/* Grid container for the boxes 
 .box-grid {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid with a minimum width of 200px per column */
-  gap: 2rem; /* Spacing between grid items */
-  padding: 2rem; /* Optional padding around the grid */
-  justify-content: center; /* Center-align the grid */
-  align-items: start; /* Align items vertically */
+  display: grid; /* Enable grid layout 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid with a minimum width of 200px per column 
+  gap: 2rem; /* Spacing between grid items 
+  padding: 2rem; /* Optional padding around the grid
+  justify-content: center; /* Center-align the grid 
+  align-items: start; /* Align items vertically 
 }
 
-/* Individual box styles */
+/* Individual box styles 
 .box {
   text-align: center;
   background-color: white;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the box */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for hover effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the box 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation for hover effects 
 }
 
 .box:hover {
-  transform: scale(1.05); /* Slight scaling on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+  transform: scale(1.05); /* Slight scaling on hover 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow 
 }
 
-/* Circle container for icons */
+/* Circle container for icons 
 .circle {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100px;
   height: 100px;
-  margin: 0 auto 1rem; /* Center the circle and add margin below */
-  border-radius: 50%; /* Make the container circular */
-  background-color: var(--secondary-color); /* Default color for the circle */
+  margin: 0 auto 1rem; /* Center the circle and add margin below 
+  border-radius: 50%; /* Make the container circular 
+  background-color: var(--secondary-color); /* Default color for the circle 
 }
 
 .circle img {
   width: 50%;
   height: 50%;
-  object-fit: contain; /* Ensure the image fits well within the circle */
+  object-fit: contain; /* Ensure the image fits well within the circle 
 }
 
-/* Title inside each box */
+/* Title inside each box 
 .box-title {
   font-size: 1.2rem;
   font-weight: 600;
