@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../context/userStore";
-import "./LoginPage.css"; // Import CSS for styling
+import "./LoginPage.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Icons for password toggle
 
 const LoginPage = () => {
