@@ -1,46 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useAuth } from "../../hooks/useAuth"; // Import useAuth
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null); // User state
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const { user, loading, logout } = useAuth(); // Use useAuth
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        console.log("Token being sent:", token);
-    
-        const response = await axios.get("http://localhost:8080/api/dashboard", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log("Response data:", response.data);
-    
-        setUser(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching user data:", err.response || err.message);
-        setError("Failed to load user data.");
-        setLoading(false);
-      }
-    };
-    
-
-    fetchUserData();
-  }, []);
 
   if (loading) {
     return <div>Loading your profile...</div>;
   }
 
-  if (error) {
-    return <div>{error}</div>;
+  if (!user) {
+    navigate("/login"); // Redirect to login if not authenticated
+    return null;
   }
 
   return (
@@ -49,7 +22,7 @@ const Dashboard = () => {
       <p>Your email: {user.email}</p>
       <button
         onClick={() => {
-          localStorage.removeItem("token"); // Log out by clearing token
+          logout(); // Call logout function
           navigate("/login");
         }}
       >

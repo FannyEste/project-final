@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth"; // Import useAuth hook
 import "./Navbar.css";
 import Logo from "../assets/logo.svg";
 import LoginIcon from "../assets/login-icon.svg"; // Import your custom icon
@@ -7,10 +8,21 @@ import LoginIcon from "../assets/login-icon.svg"; // Import your custom icon
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
   const [cyclesDropdownOpen, setCyclesDropdownOpen] = useState(false); // State for CYCLES dropdown
+  const { user, logout } = useAuth(); // Get user and logout function from useAuth
   const navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    navigate("/login");
+  const handleAccountClick = () => {
+    if (user) {
+      navigate("/dashboard"); // Redirect to Dashboard if logged in
+    } else {
+      navigate("/login"); // Redirect to Login if not logged in
+    }
+    setMenuOpen(false); // Close menu on navigation
+  };
+
+  const handleLogout = () => {
+    logout(); // Clear token and user state
+    navigate("/"); // Redirect to the homepage
     setMenuOpen(false); // Close menu on navigation
   };
 
@@ -104,10 +116,24 @@ const Navbar = () => {
         </Link>
       </nav>
 
-      {/* Login Icon with Text */}
-      <div className="navbar-login" onClick={handleLoginClick}>
-        <img src={LoginIcon} alt="Login Icon" className="login-icon" />
-        <span className="login-text">Account</span>
+      {/* Account Section */}
+      <div className="navbar-account">
+        {user ? (
+          <>
+            <div className="navbar-login" onClick={handleAccountClick}>
+              <img src={LoginIcon} alt="Account Icon" className="login-icon" />
+              <span className="login-text">Dashboard</span>
+            </div>
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
+          </>
+        ) : (
+          <div className="navbar-login" onClick={handleAccountClick}>
+            <img src={LoginIcon} alt="Login Icon" className="login-icon" />
+            <span className="login-text">Account</span>
+          </div>
+        )}
       </div>
     </header>
   );

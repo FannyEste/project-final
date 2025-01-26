@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "../../context/userStore";
+import { useAuth } from "../../hooks/useAuth"; // Import useAuth hook
 import "./LoginPage.css";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Icons for password toggle
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
-  const setUser = useUserStore((state) => state.setUser);
+  const [showPassword, setShowPassword] = useState(false);
+  const { login } = useAuth(); // Use login function from useAuth
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -23,8 +23,7 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem("token", data.token); // Store token
-        setUser(data.user); // Save user data to Zustand
+        login(data.token, data.user); // Call login function
         navigate("/dashboard"); // Redirect to Dashboard
       } else {
         alert("Invalid login credentials");
