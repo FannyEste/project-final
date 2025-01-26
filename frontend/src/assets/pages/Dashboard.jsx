@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth"; // Import useAuth
+import { useAuth } from "../../hooks/useAuth.js"; // Import useAuth
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -8,10 +8,12 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   if (loading) {
+    console.log("Loading user...");
     return <div>Loading your profile...</div>;
   }
 
   if (!user) {
+    console.log("No user detected, redirecting to login...");
     navigate("/login"); // Redirect to login if not authenticated
     return null;
   }

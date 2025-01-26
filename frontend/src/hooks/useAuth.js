@@ -9,11 +9,22 @@ export const useAuth = () => {
     const token = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
 
+    console.log("Token in useAuth:", token); // Debug
+    console.log("User in useAuth:", storedUser); // Debug
+
     if (token && storedUser) {
       setUser(JSON.parse(storedUser)); // Parse and set the user data
     }
     setLoading(false);
   }, []);
+
+  // Add login function
+  const login = (token, user) => {
+    console.log("Saving token and user:", token, user); // Add this
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+    setUser(user); // Update the user state
+  };
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -21,5 +32,5 @@ export const useAuth = () => {
     setUser(null);
   };
 
-  return { user, loading, logout };
+  return { user, loading, login, logout };
 };

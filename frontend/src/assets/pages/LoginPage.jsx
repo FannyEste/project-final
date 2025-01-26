@@ -23,6 +23,7 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log("Login response data:", data); // Add this
         login(data.token, data.user); // Call login function
         navigate("/dashboard"); // Redirect to Dashboard
       } else {

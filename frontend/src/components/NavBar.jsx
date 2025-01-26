@@ -12,6 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleAccountClick = () => {
+    console.log("User in Navbar:", user); // Add this
     if (user) {
       navigate("/dashboard"); // Redirect to Dashboard if logged in
     } else {
@@ -122,7 +123,7 @@ const Navbar = () => {
           <>
             <div className="navbar-login" onClick={handleAccountClick}>
               <img src={LoginIcon} alt="Account Icon" className="login-icon" />
-              <span className="login-text">Dashboard</span>
+              <span className="login-text">Profile</span>
             </div>
             <button onClick={handleLogout} className="logout-button">
               Logout
