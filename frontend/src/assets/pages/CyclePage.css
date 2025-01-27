@@ -1,16 +1,148 @@
+/* General Page Styles */
 .cycle-page {
-    padding: 2rem;
-    font-family: "Poppins", sans-serif;
-    color: #333;
-  }
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
 
-  .cycle-page h1 {
-    font-size: 2rem;
-    color: #66489D;
-    margin-bottom: 1rem;
-  }
+/* Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
 
-  .cycle-page p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-  }
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-title {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Description Section */
+.description-section {
+  background: #e6d8f5; /* Light purple background for follicular phase */
+  padding: 2rem;
+  text-align: center;
+}
+
+.description-section h2 {
+  color: #66489d;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.description-section p {
+  color: #333;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* Food Section */
+.food-section {
+  text-align: center;
+  padding: 2rem;
+}
+
+.food-section h3 {
+  color: #66489d;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.food-section p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.food-images {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.image-box {
+  width: 100px;
+  height: 100px;
+  background-color: #ff5733; /* Placeholder color for images */
+  border-radius: 10px;
+}
+
+/* Music Section */
+.music-section {
+  background: #fafafa;
+  padding: 2rem;
+  text-align: center;
+}
+
+.music-section h3 {
+  color: #66489d;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.music-box iframe {
+  border: none;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+/* Exercise Section */
+.exercise-section {
+  text-align: center;
+  padding: 2rem;
+}
+
+.exercise-section h3 {
+  color: #66489d;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.exercise-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.exercise-images {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.exercise-images .image-box {
+  width: 100px;
+  height: 100px;
+  background-color: #ff5733; /* Placeholder color for images */
+  border-radius: 10px;
+}
+
+/* Footer Section */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #66489d;
+  color: white;
+  margin-top: 2rem;
+}
+
+.footer-link {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
