@@ -12,7 +12,10 @@
     "vite": "^6.0.7"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/react": "^6.1.15",
     "axios": "^1.7.9",
+    "react-calendar": "^5.1.0",
     "react-icons": "^5.4.0"
   }
 }

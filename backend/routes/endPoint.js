@@ -38,7 +38,6 @@ router.post("/login", async (req, res) => {
     
     console.log("Login request received:", { email, password });
 
-
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -65,6 +64,40 @@ router.get("/profile", protect, async (req, res) => {
     res.status(200).json({ user });
   } catch (error) {
     console.error("Error fetching profile:", error);
+    res.status(500).json({ message: "Internal server error", error });
+  }
+});
+
+// Update user profile (protected)
+router.put("/profile", protect, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const { startDate, cycleLength, periodDuration } = req.body;
+
+    // Update the user fields if they are provided
+    if (startDate) user.startDate = startDate;
+    if (cycleLength) user.cycleLength = cycleLength;
+    if (periodDuration) user.periodDuration = periodDuration;
+
+    await user.save();
+
+    res.status(200).json({
+      message: "Profile updated successfully!",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        startDate: user.startDate,
+        cycleLength: user.cycleLength,
+        periodDuration: user.periodDuration,
+      },
+    });
+  } catch (error) {
+    console.error("Error updating profile:", error);
     res.status(500).json({ message: "Internal server error", error });
   }
 });
