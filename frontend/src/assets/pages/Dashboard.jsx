@@ -26,6 +26,8 @@ const Dashboard = () => {
       try {
         if (user && user.startDate && user.cycleLength && user.periodDuration) {
           // Calculate the phases based on user's cycle data
+          console.log ('fetchAndCalculatePhases 1');
+          console.log (startDate);
           const calculatedPhases = calculatePhases(
             user.startDate,
             user.cycleLength,
@@ -52,6 +54,7 @@ const Dashboard = () => {
   // Handle profile updates
   const handleProfileUpdate = async (updatedProfile) => {
     try {
+      
       const startDate = user.startDate || new Date().toISOString().split("T")[0];
       await fetch("/api/user/profile", {
         method: "PUT",
@@ -63,7 +66,10 @@ const Dashboard = () => {
       user.startDate = startDate;
       user.cycleLength = updatedProfile.cycleLength;
       user.periodDuration = updatedProfile.periodDuration;
-
+      
+      console.log ('fetchAndCalculatePhases');
+      console.log(PeriodCalendar.selectedDate);
+      console.log (startDate);
       const recalculatedPhases = calculatePhases(
         startDate,
         updatedProfile.cycleLength,
