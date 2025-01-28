@@ -1,122 +1,115 @@
+// Dashboard.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth.js"; // Import useAuth
-import ProfileInfo from "./ProfileInfo"; // Import ProfileInfo Component
-import PeriodCalendar from "./PeriodCalendar"; // Import PeriodCalendar Component
-import HormonalPhase from "./HormonalPhase"; // Import HormonalPhase Component
-import { calculatePhases } from "../../utils/cycleUtils"; // Import calculatePhases utility
+import { useAuth } from "../../hooks/useAuth.js";
+import ProfileInfo from "./ProfileInfo";
+import PeriodCalendar from "./PeriodCalendar";
+import HormonalPhase from "./HormonalPhase";
+import { calculatePhases } from "../../utils/cycleUtils";
 import "./Dashboard.css";
+import OvulatoryPhase from "../../assets/eggs.svg";
 
 const Dashboard = () => {
-  const { user, loading, logout } = useAuth(); // Use useAuth
-  const navigate = useNavigate();
+    const { user, loading, logout } = useAuth();
+    const navigate = useNavigate();
+    
+    const [phases, setPhases] = useState({
+        menstrual: [],
+        follicular: [],
+        ovulatory: [],
+        luteal: [],
+    });
+    const [startDate, setStartDate] = useState(null);
+    const [periodDuration, setPeriodDuration] = useState(5);
+    const [cycleLength, setCycleLength] = useState(28);
+    const [currentPhase, setCurrentPhase] = useState("Select your period start date to track your phase");
 
-  // State to store calculated phases and current hormonal phase
-  const [phases, setPhases] = useState({
-    menstrual: [],
-    follicular: [],
-    ovulatory: [],
-    luteal: [],
-  });
-  const [currentPhase, setCurrentPhase] = useState("");
-
-  // Fetch and calculate data after component mounts
-  useEffect(() => {
-    const fetchAndCalculatePhases = async () => {
-      try {
-        if (user && user.startDate && user.cycleLength && user.periodDuration) {
-          // Calculate the phases based on user's cycle data
-          console.log ('fetchAndCalculatePhases 1');
-          console.log (startDate);
-          const calculatedPhases = calculatePhases(
-            user.startDate,
-            user.cycleLength,
-            user.periodDuration
-          );
-          setPhases(calculatedPhases);
-
-          // Fetch current hormonal phase from the backend (optional)
-          const phaseData = await fetch("/api/cycles/current-phase").then((res) =>
-            res.json()
-          );
-          setCurrentPhase(phaseData.phase);
-        } else {
-          console.error("User data is incomplete. Missing startDate, cycleLength, or periodDuration.");
+    useEffect(() => {
+        if (startDate && cycleLength && periodDuration) {
+            const calculatedPhases = calculatePhases(
+                startDate,
+                cycleLength,
+                periodDuration
+            );
+            setPhases(calculatedPhases);
+            determineCurrentPhase(calculatedPhases);
         }
-      } catch (error) {
-        console.error("Error fetching or calculating phases:", error);
-      }
+    }, [startDate, cycleLength, periodDuration]);
+
+    const determineCurrentPhase = (phases) => {
+        const today = new Date().toDateString();
+        if (phases.menstrual.some(date => date.toDateString() === today)) {
+            setCurrentPhase("Menstrual Phase");
+        } else if (phases.follicular.some(date => date.toDateString() === today)) {
+            setCurrentPhase("Follicular Phase");
+        } else if (phases.ovulatory.some(date => date.toDateString() === today)) {
+            setCurrentPhase("Ovulatory Phase");
+        } else if (phases.luteal.some(date => date.toDateString() === today)) {
+            setCurrentPhase("Luteal Phase");
+        } else {
+            setCurrentPhase("No phase detected");
+        }
     };
 
-    fetchAndCalculatePhases();
-  }, [user]); // Recalculate when user data changes
+    const handleTrackCycle = () => {
+        if (startDate) {
+            const calculatedPhases = calculatePhases(startDate, cycleLength, periodDuration);
+            setPhases(calculatedPhases);
+            determineCurrentPhase(calculatedPhases);
+        }
+    };
 
-  // Handle profile updates
-  const handleProfileUpdate = async (updatedProfile) => {
-    try {
-      
-      const startDate = user.startDate || new Date().toISOString().split("T")[0];
-      await fetch("/api/user/profile", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...updatedProfile, startDate }),
-      });
-
-      // Update the user object and recalculate phases
-      user.startDate = startDate;
-      user.cycleLength = updatedProfile.cycleLength;
-      user.periodDuration = updatedProfile.periodDuration;
-      
-      console.log ('fetchAndCalculatePhases');
-      console.log(PeriodCalendar.selectedDate);
-      console.log (startDate);
-      const recalculatedPhases = calculatePhases(
-        startDate,
-        updatedProfile.cycleLength,
-        updatedProfile.periodDuration
-      );
-      setPhases(recalculatedPhases);
-    } catch (error) {
-      console.error("Error updating profile:", error);
-    }
-  };
-
-  if (loading) {
-    console.log("Loading user...");
-    return <div>Loading your profile...</div>;
-  }
-
-  if (!user) {
-    console.log("No user detected, redirecting to login...");
-    navigate("/login"); // Redirect to login if not authenticated
-    return null;
-  }
-
-  return (
-    <div className="dashboard">
-      <h1>Welcome, {user.name}!</h1>
-      <p>Your email: {user.email}</p>
-
-      {/* Profile Info Section */}
-      <ProfileInfo user={user} onUpdate={handleProfileUpdate} />
-
-      {/* Period Calendar Section */}
-      <PeriodCalendar phases={phases} onDateClick={() => {}} />
-
-      {/* Hormonal Phase Section */}
-      <HormonalPhase currentPhase={currentPhase} />
-
-      {/* Logout Button */}
-      <button
-        onClick={() => {
-          logout(); // Call logout function
-          navigate("/login");
-        }}
-      >
-        Log Out
-      </button>
-    </div>
-  );
+    return (
+      <div className="dashboard-container">
+          <h1 className="dashboard-title">Welcome, {user?.name || "User"}!</h1>
+  
+          <div className="dashboard-layout">
+              {/* Configure Your Cycle Box */}
+              <div className="dashboard-content">
+                  <h2>Configure Your Cycle</h2>
+                  <label>How many days did your period last?</label>
+                  <select onChange={(e) => setPeriodDuration(Number(e.target.value))}>
+                      {Array.from({ length: 10 }, (_, i) => i + 1).map(day => (
+                          <option key={day} value={day}>{day} days</option>
+                      ))}
+                  </select>
+  
+                  <label>How long is your menstrual cycle?</label>
+                  <select onChange={(e) => setCycleLength(Number(e.target.value))}>
+                      {Array.from({ length: 15 }, (_, i) => i + 21).map(day => (
+                          <option key={day} value={day}>{day} days</option>
+                      ))}
+                  </select>
+              </div>
+  
+              {/* Calendar Component */}
+              <div className="calendar-container">
+                  <h2>Select when your last period started</h2>
+                  <PeriodCalendar phases={phases} onStartDateSelect={setStartDate} />
+              </div>
+          </div>
+  
+          {/* Current Phase */}
+          <div className="current-phase-container">
+              <h3>Current Phase: {currentPhase}</h3>
+              <p>{currentPhase === "Menstrual Phase" ? "Your body is shedding the uterine lining. You may experience cramps and fatigue." : ""}</p>
+              <p>{currentPhase === "Follicular Phase" ? "Your body is preparing for ovulation, and estrogen levels rise." : ""}</p>
+              <p>{currentPhase === "Ovulatory Phase" ? "Ovulation occurs, and fertility is at its peak." : ""}</p>
+              <p>{currentPhase === "Luteal Phase" ? "Your body prepares for a potential pregnancy, and progesterone levels increase." : ""}</p>
+              <img src={currentPhase === "Menstrual Phase" ? "/images/menstrual.png" :
+                        currentPhase === "Follicular Phase" ? "/images/follicular.png" :
+                        currentPhase === "Ovulatory Phase" ? OvulatoryPhase :
+                        currentPhase === "Luteal Phase" ? "/images/luteal.png" : ""} 
+                   alt="Current Phase" className="current-phase-image"/>
+          </div>
+  
+          {/* Footer Buttons */}
+          <div className="footer-buttons">
+              <button onClick={() => navigate("/home")}>Home</button>
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Back to Top</button>
+          </div>
+      </div>
+  );  
 };
 
 export default Dashboard;

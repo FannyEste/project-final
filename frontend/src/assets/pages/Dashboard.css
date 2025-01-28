@@ -1,140 +1,196 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #dbcce6;
+  color: #4a3a67;
+}
+
 .dashboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #D5C1DE; 
-  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  padding: 3rem;
+  text-align: center;
 }
 
-/* Title */
 .dashboard-title {
   font-size: 2.5rem;
-  font-weight: 600;
-  color: #66489D; 
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-/* Content Section */
-.dashboard-content {
-  text-align: center;
-}
-
-/* Welcome Text */
-.dashboard-welcome {
-  font-size: 1.6rem;
-  color: white;
-  margin-bottom: 2rem;
-  font-weight: 900; /* Increased font weight for a thicker appearance */
-}
-
-.dashboard-username {
-  font-weight: 900;
-  color: #66489D; 
-}
-
-/* Loading Text */
-.dashboard-loading {
-  font-size: 1.2rem;
-  color: #453766; 
-}
-
-/* Logout Button */
-button {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #66489D;
-  border: 2px solid #66489D;
-  background-color: transparent;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-button:hover {
-  background-color: #453766;
-  color: white;
-}
-
-/* Calendar Container */
-.calendar {
-  margin: 2rem auto; /* Add vertical spacing */
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1); /* Transparent background */
-  border-radius: 20px;
-  backdrop-filter: blur(10px); /* Blurred effect */
-  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
-  width: 320px; /* Fixed width */
-  height: auto; /* Adjust height automatically */
-  display: flex;
-  justify-content: flex-start; /* Align content to the left */
-  align-items: center;
-  padding-left: 2rem; /* Add padding to move it away from the left edge */
-}
-
-/* React Calendar */
-.react-calendar {
-  width: 100%; /* Fit within the container */
-  max-width: 100%;
-  background: orange; /* Solid white background for clarity */
-  border: none; /* Remove border */
-  border-radius: 10px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  color: #333; /* Ensure numbers are visible */
-  opacity: 14;
-}
-
-/* Calendar Tile Styles */
-.react-calendar__tile {
-  background: transparent; /* Transparent tile background */
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
-  color: #000; /* Fully visible numbers */
-}
-
-.react-calendar__tile:hover {
-  background: rgba(0, 123, 255, 0.2); /* Blue hover effect */
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-.react-calendar__tile--active {
-  background: #007bff; /* Blue for selected days */
-  color: #fff !important; /* White text on active tiles */
-  border-radius: 8px;
-  box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.5);
-}
-
-/* Calendar Headers */
-.react-calendar__navigation button {
-  color: #007bff; /* Blue navigation buttons */
-  font-size: 1rem;
   font-weight: bold;
-  background: transparent;
-  border: none;
+  color: #4a3a67;
+  margin-bottom: 2rem;
 }
 
-.react-calendar__navigation button:hover {
-  color: #0056b3; /* Darker blue on hover */
+.dashboard-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem; /* Space between elements */
+  width: 100%;
+  max-width: 1200px; /* Limit max width */
+  margin: 0 auto; /* Center the layout */
 }
 
-/* Calendar Weekdays */
-.react-calendar__month-view__weekdays {
-  color: #666; /* Gray color for weekdays */
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.8rem;
+.dashboard-content,
+.calendar-container {
+  flex: 1; /* Equal space for both elements */
+  max-width: 400px; /* Limit max width of each box */
+  width: 100%; /* Full width on small screens */
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-/* Calendar Other Months */
-.react-calendar__tile--neighboringMonth {
-  color: #ccc; /* Light gray for days outside the current month */
+.dashboard-content label {
+  display: block;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  font-size: 1rem;
 }
 
-.react-calendar__tile--now {
-  background: rgba(0, 123, 255, 0.1); /* Light blue for today */
+.dashboard-content select {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.8rem;
   border-radius: 8px;
-  color: #007bff;
+  border: 1px solid #66489D;
+  background: white;
+  font-size: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.current-phase-container {
+  margin-top: 2.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.current-phase-image {
+  width: 100%;
+  max-width: 250px;
+  margin-top: 1.5rem;
+}
+
+.react-calendar {
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.react-calendar__tile {
+  background: transparent;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  color: #4a3a67;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.react-calendar__tile:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--phase-color, transparent);
+  z-index: -1;
+}
+
+.react-calendar__tile--active::before {
+  background: var(--phase-color, #F15A28);
+}
+
+.react-calendar__tile.menstrual-day:hover {
+  --phase-color: #F15A28;
+}
+
+.react-calendar__tile.follicular-day:hover {
+  --phase-color: #D5C1DE;
+}
+
+.react-calendar__tile.ovulatory-day:hover {
+  --phase-color: #F3BC82;
+}
+
+.react-calendar__tile.luteal-day:hover {
+  --phase-color: #F15A28;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-buttons button {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #66489D;
+  background: transparent;
+  border: 2px solid #66489D;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.footer-buttons button:hover {
+  background: #66489D;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+  }
+
+  .dashboard-content,
+  .calendar-container {
+    width: 95%; /* Full width on small screens */
+  }
+
+  .footer-buttons {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .footer-buttons button {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .dashboard-title {
+    font-size: 2rem;
+  }
 }
