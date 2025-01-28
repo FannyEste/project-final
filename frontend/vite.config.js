@@ -6,4 +6,12 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.cjs', // Ensure PostCSS config is linked
   },
+  server: {
+    // Fallback for React Router
+    historyApiFallback: true,
+  },
+  build: {
+    // Optionally, you can add output dir customization or optimizations
+    outDir: 'dist',
+  },
 });
