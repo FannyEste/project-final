@@ -1,17 +1,26 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth"; // Adjusted path
+import { useAuth } from "../../hooks/useAuth";
+import DiscussionList from "./DiscussionList";
 import "./Community.css";
 
-const Community = ({ isAuthenticated }) => {
-    const { user } = useAuth();
+const Community = () => {
+    const { user, loading } = useAuth(); // Include loading state
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isAuthenticated) {
-            navigate("/login");
+        console.log("Loading state:", loading); // Debug loading state
+        console.log("User in Community.jsx:", user); // Debug user state
+
+        if (!loading && !user) {
+            console.log("Redirecting to login...");
+            navigate("/login"); // Redirect only after loading
         }
-    }, [isAuthenticated, navigate]);
+    }, [user, loading, navigate]);
+
+    if (loading) {
+        return <p>Loading...</p>; // Avoid rendering prematurely
+    }
 
     return (
         <div className="community-container">
@@ -22,7 +31,7 @@ const Community = ({ isAuthenticated }) => {
             >
                 Start a Discussion
             </button>
-            <p>Welcome to the community!</p>
+            <DiscussionList />
         </div>
     );
 };

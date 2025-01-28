@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./DiscussionDetails.css";
+import "./DiscussionDetails.css"; // Ensure the path is correct
 
 const DiscussionDetails = ({ discussionId }) => {
     const [discussion, setDiscussion] = useState(null);
@@ -8,7 +8,7 @@ const DiscussionDetails = ({ discussionId }) => {
     useEffect(() => {
         // Fetch discussion and replies
         const fetchDiscussion = async () => {
-            const response = await fetch(`/api/discussions/${discussionId}`);
+            const response = await fetch(`http://localhost:8080/api/discussions/${discussionId}`);
             const data = await response.json();
             setDiscussion(data.discussion);
             setReplies(data.replies);
@@ -31,7 +31,7 @@ const DiscussionDetails = ({ discussionId }) => {
                             </div>
                         ))}
                     </div>
-                    <button className="floating-reply-button">Write a Reply</button>
+                    <button className="floating-reply-button">+</button>
                 </>
             )}
         </div>

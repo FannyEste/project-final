@@ -1,0 +1,87 @@
+/* DiscussionDetails.css */
+
+.discussion-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.discussion-details h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4a3a67;
+    margin-bottom: 1.5rem;
+}
+
+.discussion-details p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+.replies {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.replies h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a3a67;
+    margin-bottom: 1rem;
+}
+
+.reply {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reply p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 0.5rem;
+}
+
+.reply span {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.floating-reply-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #66489d;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.floating-reply-button:hover {
+    transform: scale(1.1);
+    background-color: #55327b;
+}

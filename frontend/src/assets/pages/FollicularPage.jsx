@@ -46,20 +46,29 @@ const Follicular = () => {
       </div>
 
       {/* Music Section */}
-      <div className="music-section">
-        <h3>SPOTIFY PLAYLIST FOR FOLLICULAR PHASE</h3>
-        <div className="music-box">
-          <iframe
-            src="https://open.spotify.com/embed/playlist/YOUR_SPOTIFY_PLAYLIST_ID"
-            width="100%"
-            height="80"
-            frameBorder="0"
-            allowtransparency="true"
-            allow="encrypted-media"
-            title="Spotify Playlist"
-          ></iframe>
-        </div>
-      </div>
+      <div>
+  <iframe
+    src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_ID"
+    width="100%"
+    height="152"
+    frameBorder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"
+    title="Spotify Playlist"
+  ></iframe>
+  <p>
+    If the playlist doesn't load,{" "}
+    <a
+      href="https://open.spotify.com/playlist/YOUR_PLAYLIST_ID"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      click here
+    </a>{" "}
+    to open it in Spotify.
+  </p>
+</div>
+
 
       {/* Exercise Section */}
       <div className="exercise-section">

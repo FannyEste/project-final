@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import userRoutes from "./routes/endPoint.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import dotenv from "dotenv";
+import discussionsRoutes from "./routes/discussionRoutes.js";
 
 dotenv.config();
 
@@ -22,6 +23,14 @@ app.use("/api/users", userRoutes);
 
 // Protected dashboard route
 app.use("/api/dashboard", dashboardRoutes);
+
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  next();
+});
+
+// Add the new discussions route
+app.use("/api/discussions", discussionsRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello Technigo!");
