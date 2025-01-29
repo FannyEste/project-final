@@ -15,6 +15,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true, // Password is required
   },
+  // Add cycle tracking fields
+  phases: {
+    menstrual: { type: [Date], default: [] },
+    follicular: { type: [Date], default: [] },
+    ovulatory: { type: [Date], default: [] },
+    luteal: { type: [Date], default: [] }
+  },
+  startDate: { type: Date, default: null },
+  periodDuration: { type: Number, default: 5 },
+  cycleLength: { type: Number, default: 28 }
 });
 
 // Create the User model

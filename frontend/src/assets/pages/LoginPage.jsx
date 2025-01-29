@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth"; // Import useAuth hook
+import { useAuth } from "../../hooks/authContext"; // Import useAuth hook
 import "./LoginPage.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -15,25 +15,34 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+        const response = await fetch("http://localhost:8080/api/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Login response data:", data); // Add this
-        login(data.token, data.user); // Call login function
-        navigate("/dashboard"); // Redirect to Dashboard
-      } else {
-        alert("Invalid login credentials");
-      }
+        if (response.ok) {
+            const data = await response.json();
+            console.log("Login response data:", data); // Debugging log
+
+            if (data.token) {
+                localStorage.setItem("token", data.token); // Store token in localStorage
+                console.log("Stored token:", localStorage.getItem("token")); // Debug log
+                login(data.token, data.user); // Call login function
+                navigate("/dashboard"); // Redirect to Dashboard
+            } else {
+                console.error("No token received from server.");
+                alert("Authentication failed. No token received.");
+            }
+        } else {
+            alert("Invalid login credentials");
+        }
     } catch (error) {
-      console.error("Error logging in:", error);
-      alert("Unable to connect to the server.");
+        console.error("Error logging in:", error);
+        alert("Unable to connect to the server.");
     }
-  };
+};
+
 
   return (
     <div className="login-container">

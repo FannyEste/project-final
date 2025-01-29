@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth"; // Import the useAuth hook
+import { useAuth } from "../../hooks/authContext"; // Import the useAuth hook
 import HeroImage from "../../assets/hero-test.svg";
 import BoxGrid from "../../components/BoxGrid";
 import "./LandingPage.css"; // Your custom CSS file

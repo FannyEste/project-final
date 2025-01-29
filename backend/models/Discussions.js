@@ -20,18 +20,22 @@ const discussionSchema = new mongoose.Schema(
     },
     replies: [
       {
-        content: String,
-        name: String, // Anonymous or user-provided name
-        createdAt: {
-          type: Date,
-          default: Date.now,
-        },
+        content: { type: String, required: true },
+        name: { type: String, default: "Anonymous" }, // Displayed name
+        user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Track who made the reply
+        createdAt: { type: Date, default: Date.now },
       },
     ],
     likes: {
       type: Number,
       default: 0,
     },
+    likedBy: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", // Track users who liked
+      },
+    ],
   },
   { timestamps: true }
 );
