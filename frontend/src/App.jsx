@@ -3,8 +3,7 @@ import Navbar from "./components/Navbar"; // Navbar component
 import LandingPage from "./assets/pages/LandingPage";
 import LoginPage from "./assets/pages/LoginPage";
 import SignupPage from "./assets/pages/SignupPage";
-import Community from "./assets/pages/Community";
-import CreateDiscussion from "./assets/pages/CreateDiscussion"; // Import the new CreateDiscussion component
+import Community from "./assets/pages/Community"; // Community Page now includes discussion form
 import DiscussionDetails from "./assets/pages/DiscussionDetails"; // Import DiscussionDetails component
 import Dashboard from "./assets/pages/Dashboard";
 import FollicularPage from "./assets/pages/FollicularPage";
@@ -15,10 +14,9 @@ import ProtectedRoute from "./components/ProtectedRoute"; // ProtectedRoute for 
 import { useAuth } from "./hooks/useAuth"; // Auth hook for user authentication
 import "./index.css";
 
-
 const App = () => {
-  const { user, loading } = useAuth(); // Access the authenticated user
-  const isAuthenticated = !!user; // Convert user object to a boolean for authentication state
+  const { user, loading } = useAuth();
+  const isAuthenticated = !!user;
 
   return (
     <>
@@ -34,25 +32,11 @@ const App = () => {
         {/* Community Routes */}
         <Route
           path="/community"
-          element={
-            isAuthenticated ? (
-              <Community isAuthenticated={isAuthenticated} />
-            ) : (
-              <LoginPage />
-            )
-          }
-        />
-        <Route
-          path="/community/new"
-          element={
-            isAuthenticated ? <CreateDiscussion /> : <LoginPage />
-          }
+          element={isAuthenticated ? <Community /> : <LoginPage />}
         />
         <Route
           path="/community/discussion/:discussionId"
-          element={
-            isAuthenticated ? <DiscussionDetails /> : <LoginPage />
-          }
+          element={isAuthenticated ? <DiscussionDetails /> : <LoginPage />}
         />
 
         {/* Dashboard */}

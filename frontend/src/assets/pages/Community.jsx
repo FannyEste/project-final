@@ -1,36 +1,86 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import DiscussionList from "./DiscussionList";
 import "./Community.css";
 
 const Community = () => {
-    const { user, loading } = useAuth(); // Include loading state
+    const { user, loading } = useAuth();
     const navigate = useNavigate();
+    const [topic, setTopic] = useState("");
+    const [content, setContent] = useState("");
+    const [anonymous, setAnonymous] = useState(false);
 
     useEffect(() => {
-        console.log("Loading state:", loading); // Debug loading state
-        console.log("User in Community.jsx:", user); // Debug user state
-
         if (!loading && !user) {
-            console.log("Redirecting to login...");
-            navigate("/login"); // Redirect only after loading
+            navigate("/login");
         }
     }, [user, loading, navigate]);
 
     if (loading) {
-        return <p>Loading...</p>; // Avoid rendering prematurely
+        return <p>Loading...</p>;
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert("You must be logged in to post a discussion.");
+            navigate("/login");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:8080/api/discussions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ topic, content, anonymous }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Failed to create discussion");
+            }
+
+            alert("Discussion created successfully!");
+            setTopic("");
+            setContent("");
+            setAnonymous(false);
+        } catch (error) {
+            alert(error.message);
+        }
+    };
 
     return (
         <div className="community-container">
             <h1 className="community-title">Community Discussions</h1>
-            <button
-                className="start-discussion-button"
-                onClick={() => navigate("/community/new")}
-            >
-                Start a Discussion
-            </button>
+
+            {/* Discussion Form */}
+            <div className="create-discussion-container">
+                <h2>Start a Discussion</h2>
+                <form onSubmit={handleSubmit} className="create-discussion-form">
+                    <label>
+                        Topic:
+                        <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} required />
+                    </label>
+                    <label>
+                        Content:
+                        <textarea value={content} onChange={(e) => setContent(e.target.value)} required />
+                    </label>
+                    <label>
+                        <input type="checkbox" checked={anonymous} onChange={(e) => setAnonymous(e.target.checked)} />
+                        Post as Anonymous
+                    </label>
+                    <button type="submit">Post Discussion</button>
+                </form>
+            </div>
+
+            {/* List of Discussions */}
             <DiscussionList />
         </div>
     );
