@@ -5,6 +5,8 @@ import HeroImage from "../../assets/hero-test.svg";
 import BoxGrid from "../../components/BoxGrid";
 import NewsSection from "../../components/NewsSection"; 
 import "./LandingPage.css"; 
+import Footer from "../../components/Footer";  // Import footer
+
 
 const LandingPage = () => {
   const { user } = useAuth(); // Get user info from useAuth
@@ -39,6 +41,9 @@ const LandingPage = () => {
 
       {/* News Section */}
       <NewsSection />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

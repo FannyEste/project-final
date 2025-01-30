@@ -25,7 +25,7 @@
 .news-ticker h2 {
     display: inline-block;
     white-space: nowrap;
-    padding-left: 50%;  /* 👈 Makes it appear sooner */
+    padding-left: 80%;  /* 👈 Makes it appear sooner */
     animation: scrollText 30s linear infinite;
 }
 
@@ -113,18 +113,21 @@
 }
 
 .view-more-button {
-    background: #E74C3C;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    transition: background 0.3s;
+    font-weight: 600;
+    color: #66489D;
+    background-color: #D5C1DE;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .view-more-button:hover {
-    background: #C0392B;
+    background-color: #453766;
+    transform: scale(1.05);
+    color: white;
 }
 
 /* Responsive Design */

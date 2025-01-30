@@ -2,52 +2,15 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./NewsSection.css";
-
-import news1 from "../../assets/news1.webp";
-import news2 from "../../assets/news2.webp";
-import news3 from "../../assets/news3.webp";
-import news4 from "../../assets/news4.webp";
-import news5 from "../../assets/news5.webp";
-import news6 from "../../assets/news6.webp";
+import "./NewsSection.css"; 
 
 const newsData = [
-  {
-    title: "Hormonal Imbalance: Symptoms, Causes, and Treatment",
-    date: "Published: 8 months ago",
-    image: "../../assets/news1.webp", 
-    link: "https://www.medicalnewstoday.com/articles/321486"
-  },
-  {
-    title: "Can Food Really Change Your Hormones?",
-    date: "Published: 6 months ago",
-    image: "/assets/news2.webp",
-    link: "https://time.com/7000236/can-food-change-your-hormones/"
-  },
-  {
-    title: "Extra Moody, Struggling to Sleep or Can't Stop Overthinking? Your Hormones May Be Out of Whack - How to Spot the Signs",
-    date: "Published: 6 months ago",
-    image: "/assets/news3.webp",
-    link: "https://www.thescottishsun.co.uk/health/13236885/stop-overthinking-hormones-signs-anxious-moody-sleep/"
-  },
-  {
-    title: "What Is the Luteal Phase? An Ob-Gyn Breaks It Down",
-    date: "Published: 4 months ago",
-    image: "/assets/news4.webp",
-    link: "https://www.popsugar.com/fitness/what-is-luteal-phase-49304990"
-  },
-  {
-    title: "Cycle Syncing: How to Attune to Each Menstrual Phase",
-    date: "Published: 3 months ago",
-    image: "/assets/news5.webp",
-    link: "https://www.verywellhealth.com/cycle-syncing-8719265"
-  },
-  {
-    title: "Is Contraception Under Attack?",
-    date: "Published: last month",
-    image: "/assets/news6.webp",
-    link: "https://www.newyorker.com/news/the-lede/is-contraception-under-attack"
-  }
+  { title: "Hormonal Imbalance: Symptoms, Causes, and Treatment", date: "Published: 8 months ago", image: "/news1.webp", link: "https://www.medicalnewstoday.com/articles/321486" },
+  { title: "Can Food Really Change Your Hormones?", date: "Published: 6 months ago", image: "/news2.webp", link: "https://time.com/7000236/can-food-change-your-hormones/" },
+  { title: "Extra Moody, Struggling to Sleep or Can't Stop Overthinking? Your Hormones May Be Out of Whack - How to Spot the Signs", date: "Published: 6 months ago", image: "/news3.webp", link: "https://www.thescottishsun.co.uk/health/13236885/stop-overthinking-hormones-signs-anxious-moody-sleep/" },
+  { title: "What Is the Luteal Phase? An Ob-Gyn Breaks It Down", date: "Published: 4 months ago", image: "/news4.webp", link: "https://www.popsugar.com/fitness/what-is-luteal-phase-49304990" },
+  { title: "Cycle Syncing: How to Attune to Each Menstrual Phase", date: "Published: 3 months ago", image: "/news5.webp", link: "https://www.verywellhealth.com/cycle-syncing-8719265" },
+  { title: "Is Contraception Under Attack?", date: "Published: last month", image: "/news6.webp", link: "https://www.newyorker.com/news/the-lede/is-contraception-under-attack" }
 ];
 
 const NewsSection = () => {
