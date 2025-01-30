@@ -1,8 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LandingPage from "./assets/pages/LandingPage";
-import LoginPage from "./assets/pages/LoginPage";
-import SignupPage from "./assets/pages/SignupPage";
+import Account from "./assets/pages/Account";
 import Community from "./assets/pages/Community";
 import Dashboard from "./assets/pages/Dashboard";
 import FollicularPage from "./assets/pages/FollicularPage";
@@ -27,29 +26,12 @@ const App = () => {
       {/* Navbar */}
       <Navbar />
 
+      {/* Routes for navigation */}
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <LoginPage />} />
-        <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <SignupPage />} />
-
-        {/* Protected Community Routes */}
-        <Route
-          path="/community"
-          element={isAuthenticated ? <Community /> : <Navigate to="/login" />}
-        />
-        
-        {/* Protected Dashboard Route */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* Public Cycle Pages */}
+        <Route path="/account" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Account />} />
+        <Route path="/community" element={isAuthenticated ? <Community /> : <Navigate to="/account" />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/cycles/follicular" element={<FollicularPage />} />
         <Route path="/cycles/ovulatory" element={<OvulatoryPage />} />
         <Route path="/cycles/luteal" element={<LutealPage />} />

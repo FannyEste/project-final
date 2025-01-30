@@ -1,22 +1,22 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/authContext"; 
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/authContext";
 import HeroImage from "../../assets/hero-test.svg";
 import BoxGrid from "../../components/BoxGrid";
-import NewsSection from "../../components/NewsSection"; 
-import "./LandingPage.css"; 
-import Footer from "../../components/Footer";  // Import footer
-
+import NewsSection from "../../components/NewsSection";
+import Footer from "../../components/Footer";
+import AboutUs from "../../components/AboutUs";  // Import About Us
+import "./LandingPage.css";
 
 const LandingPage = () => {
-  const { user } = useAuth(); // Get user info from useAuth
-  const navigate = useNavigate(); // For programmatic navigation
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleGetStarted = () => {
     if (user) {
-      navigate("/dashboard"); // Redirect to Dashboard if logged in
+      navigate("/dashboard");
     } else {
-      navigate("/signup"); // Redirect to Signup if not logged in
+      navigate("/account");
     }
   };
 
@@ -26,7 +26,9 @@ const LandingPage = () => {
       <div className="hero-section">
         <img src={HeroImage} alt="Hero" className="hero-image" />
         <div className="hero-text">
-          <h1 className="hero-title">WELCOME TO HORMONAL HEAVEN</h1>
+          <h1 className="hero-title">
+            WELCOME TO <span className="hero-highlight">HORMONAL HEAVEN</span>
+          </h1>
           <p className="hero-subtitle">SAFE SPACE. MESSY THOUGHTS. REAL TALK.</p>
           <button onClick={handleGetStarted} className="hero-button">
             Get Started
@@ -39,10 +41,13 @@ const LandingPage = () => {
         <BoxGrid />
       </div>
 
-      {/* News Section */}
+      {/* 🔹 News Section (Now Before About Us) */}
       <NewsSection />
 
-      {/* Footer */}
+      {/* 🔹 About Us Section (Moved to Before Footer) */}
+      <AboutUs />
+
+      {/* 🔹 Footer (Now After About Us) */}
       <Footer />
     </div>
   );

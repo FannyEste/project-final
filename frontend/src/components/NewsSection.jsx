@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./NewsSection.css"; 
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const newsData = [
   { title: "Hormonal Imbalance: Symptoms, Causes, and Treatment", date: "Published: 8 months ago", image: "/news1.webp", link: "https://www.medicalnewstoday.com/articles/321486" },
@@ -13,6 +14,24 @@ const newsData = [
   { title: "Is Contraception Under Attack?", date: "Published: last month", image: "/news6.webp", link: "https://www.newyorker.com/news/the-lede/is-contraception-under-attack" }
 ];
 
+// 🔹 Custom Left Arrow Component
+const CustomPrevArrow = ({ onClick }) => {
+  return (
+    <button className="custom-arrow custom-prev" onClick={onClick}>
+      <FaChevronLeft />
+    </button>
+  );
+};
+
+// 🔹 Custom Right Arrow Component
+const CustomNextArrow = ({ onClick }) => {
+  return (
+    <button className="custom-arrow custom-next" onClick={onClick}>
+      <FaChevronRight />
+    </button>
+  );
+};
+
 const NewsSection = () => {
   const settings = {
     dots: true,
@@ -20,9 +39,11 @@ const NewsSection = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false, // No automatic movement
+    autoplay: false, 
     centerMode: true,
     centerPadding: "20px",
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -42,7 +63,7 @@ const NewsSection = () => {
   };
 
   return (
-    <div className="news-section">
+    <div className="news-section" id="news-section">
       {/* News Header with Scrolling Effect */}
       <div className="news-ticker">
         <h2>WHERE THE VIBES MEET SCIENCE</h2>
@@ -63,10 +84,6 @@ const NewsSection = () => {
         ))}
       </Slider>
 
-      {/* View More Button */}
-      <div className="view-more-container">
-        <button className="view-more-button">View More</button>
-      </div>
     </div>
   );
 };

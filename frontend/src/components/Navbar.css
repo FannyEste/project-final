@@ -12,15 +12,6 @@
     font-family: "Poppins", sans-serif;
   }
   
-  /* Logo */
-  .navbar-logo img {
-    height: 80px;
-    width: auto;
-    max-height: 10vh;
-    cursor: pointer;
-    transition: height 0.3s ease;
-  }
-  
   /* Navbar Menu */
   .navbar-menu {
     display: flex;

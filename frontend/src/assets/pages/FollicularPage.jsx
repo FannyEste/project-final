@@ -47,15 +47,18 @@ const Follicular = () => {
 
       {/* Music Section */}
       <div>
+      <div className="spotify-container">
   <iframe
-    src="https://open.spotify.com/embed/playlist/YOUR_PLAYLIST_ID"
-    width="100%"
-    height="152"
+    src="https://open.spotify.com/embed/playlist/11DVNTiYQqCmSwY7pGZfTu?si=1OYalZktT9eHqxjHtUWr0g"
+    width="300"  /* Adjust width */
+    height="380" /* Adjust height */
     frameBorder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy"
     title="Spotify Playlist"
   ></iframe>
+</div>
+
   <p>
     If the playlist doesn't load,{" "}
     <a

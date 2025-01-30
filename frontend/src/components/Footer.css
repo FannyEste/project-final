@@ -1,6 +1,7 @@
+
 .footer {
-    background-color: #66489D;
-    color: white;
+    background-color: #D5C1DE;
+    color: #66489D;
     text-align: center;
     padding: 20px 0;
     font-size: 1rem;
@@ -14,13 +15,13 @@
 .footer-links a, .footer-social a {
     display: inline-block;
     margin: 5px 10px;
-    color: white;
+    color: #66489D;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
 
 .footer-links a:hover, .footer-social a:hover {
-    color: #D5C1DE;
+    color: red;
 }
 
 .footer-credit {

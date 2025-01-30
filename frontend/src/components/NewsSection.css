@@ -15,8 +15,8 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: #66489D;
-    background: #f8f8f8;
-    padding: 10px 0 10px 0;
+    background: #D5C1DE;
+    padding: 10px 0;
     display: flex;
     align-items: center;
 }
@@ -25,7 +25,7 @@
 .news-ticker h2 {
     display: inline-block;
     white-space: nowrap;
-    padding-left: 80%;  /* 👈 Makes it appear sooner */
+    padding-left: 80%;
     animation: scrollText 30s linear infinite;
 }
 
@@ -36,19 +36,51 @@
 
 /* Slower & Smooth Scrolling Effect */
 @keyframes scrollText {
-    from { transform: translateX(50%); } /* 👈 Starts closer */
+    from { transform: translateX(50%); }
     to { transform: translateX(-100%); }
 }
 
 /* News Carousel */
 .news-carousel .slick-slide {
-    padding: 50px; /* ADD SPACING BETWEEN SLIDES */
+    padding: 50px;
     display: flex;
     justify-content: center;
 }
 
-/* Individual News Card */
-/* News Card - Ensuring Same Size */
+/* 🔹 Custom Arrows Styling */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #D5C1DE; /* Lilac color */
+    transition: color 0.3s ease-in-out;
+    z-index: 100;
+}
+
+/* Hover Effect */
+.custom-arrow:hover {
+    color: #66489D; /* Dark purple hover effect */
+}
+
+/* Positioning */
+.custom-prev {
+    left: -40px;
+}
+
+.custom-next {
+    right: -40px;
+}
+
+/* 🔹 Hide Default Slick Arrows */
+.slick-prev, .slick-next {
+    display: none !important;
+}
+
+/* News Card */
 .news-card {
     position: relative;
     background: #fff;
@@ -58,8 +90,8 @@
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 320px; /* Fixed width */
-    height: 400px; /* Fixed height to keep all cards equal */
+    max-width: 320px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,14 +104,14 @@
 /* News Image */
 .news-image {
     width: 100%;
-    height: 180px; /* Fixed image height */
+    height: 180px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
 }
 
-/* News Content - Ensuring Same Size */
+/* News Content */
 .news-content {
-    flex: 1; /* Makes content fill the available space */
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -88,12 +120,12 @@
     border-radius: 0 0 10px 10px;
 }
 
-/* Title - Limits Text Overflow */
+/* Title */
 .news-content h3 {
     font-size: 1.2rem;
     color: #66489D;
     margin-bottom: 5px;
-    max-height: 50px; /* Prevents title from making boxes uneven */
+    max-height: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -103,31 +135,7 @@
 .news-content p {
     font-size: 1rem;
     color: #666;
-    margin-top: auto; /* Pushes date to bottom */
-}
-
-
-/* View More Button */
-.view-more-container {
-    margin-top: 20px;
-}
-
-.view-more-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #66489D;
-    background-color: #D5C1DE;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.view-more-button:hover {
-    background-color: #453766;
-    transform: scale(1.05);
-    color: white;
+    margin-top: auto;
 }
 
 /* Responsive Design */
@@ -152,5 +160,14 @@
 
     .news-content p {
         font-size: 0.9rem;
+    }
+
+    /* Adjust Arrow Position for Mobile */
+    .custom-prev {
+        left: -20px;
+    }
+
+    .custom-next {
+        right: -20px;
     }
 }

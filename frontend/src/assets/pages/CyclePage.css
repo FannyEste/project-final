@@ -151,17 +151,25 @@
 .footer {
   text-align: center;
   padding: 1rem;
-  background: #66489d;
+  background: #D5C1DE;
   color: white;
   margin-top: 2rem;
 }
 
 .footer-link {
-  color: white;
+  color: #66489D;
   margin: 0 1rem;
   text-decoration: none;
 }
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+.spotify-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  margin: 20px auto; /* Add some spacing */
+  max-width: 320px; /* Prevent it from being too wide */
 }
