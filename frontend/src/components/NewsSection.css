@@ -1,0 +1,153 @@
+/* News Section Styling */
+.news-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* News Ticker (Scrolling Header) */
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #66489D;
+    background: #f8f8f8;
+    padding: 10px 0 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Text Inside the Ticker */
+.news-ticker h2 {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 50%;  /* 👈 Makes it appear sooner */
+    animation: scrollText 30s linear infinite;
+}
+
+/* Repeat Text Multiple Times for Seamless Effect */
+.news-ticker h2::after {
+    content: " • WHERE THE VIBES MEET SCIENCE • WHERE THE VIBES MEET SCIENCE • WHERE THE VIBES MEET SCIENCE ";
+}
+
+/* Slower & Smooth Scrolling Effect */
+@keyframes scrollText {
+    from { transform: translateX(50%); } /* 👈 Starts closer */
+    to { transform: translateX(-100%); }
+}
+
+/* News Carousel */
+.news-carousel .slick-slide {
+    padding: 50px; /* ADD SPACING BETWEEN SLIDES */
+    display: flex;
+    justify-content: center;
+}
+
+/* Individual News Card */
+/* News Card - Ensuring Same Size */
+.news-card {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 320px; /* Fixed width */
+    height: 400px; /* Fixed height to keep all cards equal */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-card:hover {
+    transform: scale(1.05);
+}
+
+/* News Image */
+.news-image {
+    width: 100%;
+    height: 180px; /* Fixed image height */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* News Content - Ensuring Same Size */
+.news-content {
+    flex: 1; /* Makes content fill the available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 10px 10px;
+}
+
+/* Title - Limits Text Overflow */
+.news-content h3 {
+    font-size: 1.2rem;
+    color: #66489D;
+    margin-bottom: 5px;
+    max-height: 50px; /* Prevents title from making boxes uneven */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Date Styling */
+.news-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-top: auto; /* Pushes date to bottom */
+}
+
+
+/* View More Button */
+.view-more-container {
+    margin-top: 20px;
+}
+
+.view-more-button {
+    background: #E74C3C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.view-more-button:hover {
+    background: #C0392B;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .news-carousel .slick-slide {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-ticker h2 {
+        font-size: 1.2rem;
+    }
+
+    .news-image {
+        height: 180px;
+    }
+
+    .news-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .news-content p {
+        font-size: 0.9rem;
+    }
+}

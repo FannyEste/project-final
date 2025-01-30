@@ -7,12 +7,12 @@
   
   /* Section Title */
   .cycles-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #66489D; /* Updated color */
     margin-bottom: 3rem;
-    margin-left: 2rem; /* Shift title more to the left */
     font-family: "Poppins", sans-serif;
+    text-align: center
   }
   
   /* Box Grid */
@@ -36,7 +36,7 @@
     justify-content: center; /* Center content vertically */
     padding: 2rem;
     border: 2px solid #D5C1DE; /* Light purple stroke for the box edges */
-    border-radius: 8px;
+    border-radius: 80px;
     background-color: transparent; /* Transparent box background */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;

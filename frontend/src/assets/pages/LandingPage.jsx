@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/authContext"; // Import the useAuth hook
+import { useAuth } from "../../hooks/authContext"; 
 import HeroImage from "../../assets/hero-test.svg";
 import BoxGrid from "../../components/BoxGrid";
-import "./LandingPage.css"; // Your custom CSS file
+import NewsSection from "../../components/NewsSection"; 
+import "./LandingPage.css"; 
 
 const LandingPage = () => {
   const { user } = useAuth(); // Get user info from useAuth
@@ -35,6 +36,9 @@ const LandingPage = () => {
       <div className="boxgrid-container">
         <BoxGrid />
       </div>
+
+      {/* News Section */}
+      <NewsSection />
     </div>
   );
 };

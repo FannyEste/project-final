@@ -2,15 +2,17 @@
 .hero-section {
     position: relative;
     width: 100%;
-    height: 60vh; /* Adjust the height as needed  */
+    height: 100vh;
+    min-height: 600px;
     overflow: hidden;
-    font-family: "Poppins", sans-serif; /* Use Poppins font  */
+    font-family: "Poppins", sans-serif; 
   }
   
   .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top; 
   }
   
   .hero-text {
@@ -19,21 +21,27 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #66489D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 2;
   }
   
   /* Hero Title  */
   .hero-text h1 {
     font-size: 3rem;
-    font-weight: 700; /* Bold for emphasis  */
-    margin-bottom: 1rem;
+    font-weight: 700; 
+    margin-bottom: 1.5rem;
   }
   
   /* Hero Subtitle  */
   .hero-text p {
     font-size: 1.1rem;
     font-weight: 400; /* Regular weight for subtitle  */
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    color: white;
   }
   
   /* Hero Button  */
@@ -68,5 +76,15 @@
     .hero-button {
       padding: 0.5rem 1rem;
       font-size: 0.9rem; /* Smaller button on mobile */
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-image {
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    .hero-section {
+      height: 90vh;
     }
   }
