@@ -7,21 +7,20 @@
 }
 
 /* Hero Section */
-.hero-section {
+.cycles-hero-section {
   position: relative;
   width: 100%;
   height: 300px;
 }
 
-.hero-image {
+.cycles-hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: center;
 }
 
-.hero-title {
-  position: center;
+.cycles-hero-title {
+  position: absolute;
   bottom: 20px;
   left: 20px;
   color: white;
@@ -32,144 +31,170 @@
 
 /* Description Section */
 .description-section {
-  background: #e6d8f5; /* Light purple background for follicular phase */
-  padding: 2rem;
+  background: #e6d8f5;
+  padding: 4rem 3rem;
   text-align: center;
 }
 
 .description-section h2 {
   color: #66489d;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .description-section p {
-  color: #333;
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-size: 1.3rem;
+  line-height: 2;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Food Section */
 .food-section {
   text-align: center;
-  padding: 2rem;
+  padding: 6rem 3rem;
 }
 
 .food-section h3 {
   color: #66489d;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
 .food-section p {
-  font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  line-height: 2;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  color: #66489D;
 }
 
 .food-images {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 4rem;
+  margin-top: 2.5rem;
 }
 
-.image-box {
-  width: 100px;
-  height: 100px;
-  background-color: #ff5733; /* Placeholder color for images */
+.food-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
 /* Music Section */
 .music-section {
   background: #fafafa;
-  padding: 2rem;
+  padding: 4rem 3rem;
   text-align: center;
 }
 
 .music-section h3 {
   color: #66489d;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
-.music-box iframe {
-  border: none;
-  border-radius: 10px;
-  margin-top: 1rem;
-  max-width: 100%;
-  height: 152px; /* Updated height for better visibility */
-}
-
-.music-box {
-  position: relative;
-  padding-bottom: 56.25%; /* Aspect ratio for responsiveness */
-  height: 0;
-  overflow: hidden;
-}
-
-.music-box iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+.spotify-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  padding: 30px;
 }
 
 /* Exercise Section */
 .exercise-section {
   text-align: center;
-  padding: 2rem;
+  padding: 4rem 3rem;
 }
 
 .exercise-section h3 {
   color: #66489d;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.exercise-section p {
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   margin-bottom: 2rem;
 }
 
-.exercise-images {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.exercise-section p {
+  font-size: 1.3rem;
+  line-height: 2;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  color: #66489D;
 }
 
-.exercise-images .image-box {
-  width: 100px;
-  height: 100px;
-  background-color: white; /* Placeholder color for images */
+.exercise-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercise-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  width: 80%;
+}
+
+.exercise-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
-/* Footer Section */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  background: #D5C1DE;
-  color: white;
-  margin-top: 2rem;
-}
-
-.footer-link {
+.exercise-text {
+  text-align: left;
   color: #66489D;
-  margin: 0 1rem;
-  text-decoration: none;
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  padding-bottom: 2rem;
 }
 
-.footer-link:hover {
-  text-decoration: underline;
+.exercise-text h4 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
 }
 
-.spotify-container {
+/* Footer Buttons */
+.footer-buttons {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;
-  margin: 20px auto; /* Add some spacing */
-  max-width: 320px; /* Prevent it from being too wide */
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-buttons button {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #66489D;
+  background: transparent;
+  border: 2px solid #66489D;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.footer-buttons button:hover {
+  background: #66489D;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .exercise-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .exercise-text {
+    padding-left: 0;
+    margin-top: 1.5rem;
+  }
 }

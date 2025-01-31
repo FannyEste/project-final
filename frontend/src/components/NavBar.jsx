@@ -80,9 +80,6 @@ const Navbar = () => {
         <Link to="/community" className="navbar-link" onClick={() => setMenuOpen(false)}>
           COMMUNITY
         </Link>
-        <Link to="/blog" className="navbar-link" onClick={() => setMenuOpen(false)}>
-          BLOG
-        </Link>
         {/* 🔹 Click NEWS to scroll instead of navigating */}
         <span className="navbar-link" onClick={handleScrollToNews}>
           NEWS

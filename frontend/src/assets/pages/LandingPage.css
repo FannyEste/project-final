@@ -1,122 +1,145 @@
 /* Hero Section */
 .hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    overflow: hidden;
-    font-family: "Poppins", sans-serif; 
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
+  color: white;
+  padding: 2rem;
+}
+
+/* Hero Title  */
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+/* Hero Subtitle  */
+.hero-text p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+/* Hero Button  */
+.hero-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #66489D;
+  background-color: #D5C1DE;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #453766;
+  transform: scale(1.05);
+  color: white;
+}
+
+/* Responsive Adjustments  */
+@media (max-width: 768px) {
+  .hero-section {
+      height: 60vh;
   }
   
+  .hero-image {
+      width: 100%;
+      height: 100%;
+  }
+  
+  .hero-text {
+      padding: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1024px) {
   .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top; 
+    object-position: center center;
   }
-  
-  .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    z-index: 2;
+  .hero-section {
+    height: 90vh;
   }
-  
-  /* Hero Title  */
-  .hero-text h1 {
-    font-size: 3rem;
-    font-weight: 700; 
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Hero Subtitle  */
-  .hero-text p {
-    font-size: 1.1rem;
-    font-weight: 400; /* Regular weight for subtitle  */
-    margin-bottom: 2rem;
-    color: white;
-  }
-  
-  /* Hero Button  */
-  .hero-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600; /* Semi-bold for the button text  */
-    color: #66489D;
-    background-color: #D5C1DE; /* Match the theme color  */
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .hero-button:hover {
-    background-color: #453766; /* Darker red on hover  */
-    transform: scale(1.05); /* Slightly enlarge on hover  */
-    color: white;
-  }
-  
-  /* Responsive Adjustments  */
-  @media (max-width: 768px) {
-    .hero-text h1 {
-      font-size: 2.5rem; /* Adjust title size for smaller screens  */ 
-    }
-  
-    .hero-text p {
-      font-size: 1.2rem; /* Adjust subtitle size  */
-    }
-  
-    .hero-button {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem; /* Smaller button on mobile */
-    }
-  }
-  @media (min-width: 1024px) {
-    .hero-image {
-      object-fit: contain;
-      object-position: center center;
-    }
+}
 
-    .hero-section {
-      height: 90vh;
-    }
-  }
-
-  .footer {
-    background-color: #D5C1DE; /* Lilac background */
-    color: #D5C1DE; /* Dark purple text */
-    text-align: center;
-    padding: 20px 0;
-    font-size: 1rem;
+/* Footer Section */
+.footer {
+  background-color: #D5C1DE;
+  color: #66489D;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1rem;
 }
 
 .footer-content h3 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #66489D; 
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #66489D;
 }
 
 .footer-links a, .footer-social a {
-    display: inline-block;
-    margin: 5px 10px;
-    color: #66489D; /* Dark purple links */
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
+  display: inline-block;
+  margin: 5px 10px;
+  color: #66489D;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
 }
 
 .footer-links a:hover, .footer-social a:hover {
-    color: #66489D; /* Slightly darker purple hover effect */
+  color: #453766;
 }
 
 .footer-credit {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    opacity: 0.8;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
