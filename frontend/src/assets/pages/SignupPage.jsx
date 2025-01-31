@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignupPage.css"; 
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import the icons from react-icons
+import { API_URL } from "../config";
 
 
 const SignupPage = () => {
@@ -15,7 +16,7 @@ const SignupPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/users/register", {
+      const response = await fetch(`${API_URL}/api/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

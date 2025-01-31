@@ -6,6 +6,7 @@ import { calculatePhases } from "../../utils/cycleUtils";
 import axios from "axios";
 import "./Dashboard.css";
 import OvulatoryPhase from "../../assets/eggs.svg";
+import { API_URL } from "../../config";
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -30,7 +31,7 @@ const Dashboard = () => {
             if (!user) return;
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get("http://localhost:8080/api/dashboard", {
+                const response = await axios.get(`${API_URL}/api/dashboard`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = response.data;
@@ -55,7 +56,7 @@ const Dashboard = () => {
         try {
             const token = localStorage.getItem("token");
             await axios.put(
-                "http://localhost:8080/api/dashboard/update-cycle",
+                `${API_URL}/api/dashboard/update-cycle`,
                 { phases, startDate, periodDuration, cycleLength },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

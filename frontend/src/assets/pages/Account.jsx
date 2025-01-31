@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext"; // Import auth hook
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Account.css"; // Ensure styles are consistent
+import { API_URL } from "../../config";
 
 const Account = () => {
   const [isLogin, setIsLogin] = useState(true); // Toggle between Login & Signup
@@ -17,7 +18,7 @@ const Account = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/users/login", {
+      const response = await fetch(`${API_URL}/api/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -45,7 +46,7 @@ const Account = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/users/register", {
+      const response = await fetch(`${API_URL}/api/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

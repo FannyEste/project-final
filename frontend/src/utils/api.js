@@ -1,8 +1,9 @@
 // src/utils/api.js
 import axios from "axios";
+import { API_URL } from "../config";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: `${API_URL}/api`,
 });
 
 export const registerUser = (userData) => API.post("/users/register", userData);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext";
 import "./Community.css";
+import { API_URL } from "../../config";
 
 const Community = () => {
     const { user, loading } = useAuth();
@@ -16,17 +17,18 @@ const Community = () => {
     const [openComments, setOpenComments] = useState({});
 
     useEffect(() => {
-        if (!loading && !user) {
-            navigate("/login");
+        if (!loading && user) {
+            fetchDiscussions();
         }
-        fetchDiscussions();
     }, [user, loading, currentPage]);
 
     if (loading) return <p>Loading...</p>;
 
     const fetchDiscussions = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/discussions?page=${currentPage}&limit=3`);
+            const response = await fetch(`${API_URL}/api/discussions?page=${currentPage}&limit=3`);
+            if (!response.ok) throw new Error("Failed to fetch discussions");
+
             const data = await response.json();
             setDiscussions(data.discussions || []);
             setTotalPages(data.totalPages || 1);
@@ -46,7 +48,7 @@ const Community = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/discussions", {
+            const response = await fetch(`${API_URL}/api/discussions`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -70,16 +72,12 @@ const Community = () => {
     const handleDeleteDiscussion = async (discussionId) => {
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`http://localhost:8080/api/discussions/${discussionId}`, {
+            const response = await fetch(`${API_URL}/api/discussions/${discussionId}`, {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
             if (!response.ok) throw new Error("Failed to delete discussion");
-
-            setDiscussions((prevDiscussions) =>
-                prevDiscussions.filter((discussion) => discussion._id !== discussionId)
-            );
 
             fetchDiscussions();
         } catch (error) {
@@ -95,20 +93,12 @@ const Community = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8080/api/discussions/${discussionId}/reply/${replyId}`, {
+            const response = await fetch(`${API_URL}/api/discussions/${discussionId}/reply/${replyId}`, {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
             if (!response.ok) throw new Error("Failed to delete comment");
-
-            setDiscussions((prevDiscussions) =>
-                prevDiscussions.map((discussion) =>
-                    discussion._id === discussionId
-                        ? { ...discussion, replies: discussion.replies.filter((reply) => reply._id !== replyId) }
-                        : discussion
-                )
-            );
 
             fetchDiscussions();
         } catch (error) {
@@ -124,20 +114,14 @@ const Community = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8080/api/discussions/${discussionId}/like`, {
+            const response = await fetch(`${API_URL}/api/discussions/${discussionId}/like`, {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${token}` },
             });
 
             if (!response.ok) throw new Error("Failed to like/unlike discussion");
 
-            const updatedDiscussion = await response.json();
-
-            setDiscussions((prevDiscussions) =>
-                prevDiscussions.map((discussion) =>
-                    discussion._id === discussionId ? updatedDiscussion : discussion
-                )
-            );
+            fetchDiscussions();
         } catch (error) {
             console.error("Error liking discussion:", error);
         }
@@ -156,7 +140,7 @@ const Community = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8080/api/discussions/${discussionId}/reply`, {
+            const response = await fetch(`${API_URL}/api/discussions/${discussionId}/reply`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -197,19 +181,19 @@ const Community = () => {
 
                         <div className="discussion-footer">
                             <button className="like-button" onClick={() => handleLike(discussion._id)}>
-                                ❤️ {discussion.likes}
+                                ❤️ {discussion.likes || 0}
                             </button>
                             <button className="comment-button" onClick={() => setOpenComments((prev) => ({
                                 ...prev,
                                 [discussion._id]: !prev[discussion._id]
                             }))}>
-                                💬 {discussion.replies.length}
+                                💬 {discussion.replies?.length || 0}
                             </button>
                         </div>
 
                         {openComments[discussion._id] && (
                             <div className="discussion-comments">
-                                {discussion.replies.map((reply) => (
+                                {discussion.replies?.map((reply) => (
                                     <div key={reply._id} className="comment-item">
                                         <span className="comment-name">{reply.name}:</span>
                                         <span className="comment-text">{reply.content}</span>
