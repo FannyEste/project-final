@@ -6,13 +6,16 @@ import { calculatePhases } from "../../utils/cycleUtils";
 import axios from "axios";
 import "./Dashboard.css";
 import OvulatoryPhase from "../../assets/eggs.svg";
+import FollicularPhase from "../../assets/follicular-phase.svg";
+import LutealPhase from "../../assets/luteal-phase.svg";
+import MenstrualPhase from "../../assets/menstrual-phase.svg";
+import NoDataImage from "../../assets/no-data.svg"; // Placeholder image for no data
 import { API_URL } from "../../config";
 
 const Dashboard = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    // State for cycle data
     const [phases, setPhases] = useState({
         menstrual: [],
         follicular: [],
@@ -22,10 +25,9 @@ const Dashboard = () => {
     const [startDate, setStartDate] = useState(null);
     const [periodDuration, setPeriodDuration] = useState(5);
     const [cycleLength, setCycleLength] = useState(28);
-    const [currentPhase, setCurrentPhase] = useState("Select your period start date to track your phase");
+    const [currentPhase, setCurrentPhase] = useState("No phase detected");
     const [loading, setLoading] = useState(true);
 
-    // Fetch cycle data when user logs in
     useEffect(() => {
         const fetchCycleData = async () => {
             if (!user) return;
@@ -51,7 +53,6 @@ const Dashboard = () => {
         fetchCycleData();
     }, [user]);
 
-    // Save cycle data to the backend
     const saveCycleData = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -67,7 +68,6 @@ const Dashboard = () => {
         }
     };
 
-    // Update phases and determine current phase when user changes settings
     useEffect(() => {
         if (startDate && cycleLength && periodDuration) {
             const calculatedPhases = calculatePhases(startDate, cycleLength, periodDuration);
@@ -76,7 +76,6 @@ const Dashboard = () => {
         }
     }, [startDate, cycleLength, periodDuration]);
 
-    // Determine the current cycle phase
     const determineCurrentPhase = (phases) => {
         const today = new Date().toDateString();
         if (phases.menstrual.some(date => new Date(date).toDateString() === today)) {
@@ -101,24 +100,36 @@ const Dashboard = () => {
             {/* Current Phase Box */}
             <div className="current-phase-container">
                 <h3>Current Phase: {currentPhase}</h3>
+                
+                {/* Show description based on the phase */}
                 <p>{currentPhase === "Menstrual Phase" ? "Your body is shedding the uterine lining." : ""}</p>
                 <p>{currentPhase === "Follicular Phase" ? "Your body is preparing for ovulation." : ""}</p>
                 <p>{currentPhase === "Ovulatory Phase" ? "Ovulation occurs, and fertility is at its peak." : ""}</p>
                 <p>{currentPhase === "Luteal Phase" ? "Your body prepares for a potential pregnancy." : ""}</p>
+
+                {/* Show Image Based on the Phase */}
                 <img 
-                    src={currentPhase === "Menstrual Phase" ? "/images/menstrual.png" :
-                         currentPhase === "Follicular Phase" ? "/images/follicular.png" :
-                         currentPhase === "Ovulatory Phase" ? OvulatoryPhase :
-                         currentPhase === "Luteal Phase" ? "/images/luteal.png" : ""} 
+                    src={
+                        currentPhase === "Menstrual Phase" ? MenstrualPhase :
+                        currentPhase === "Follicular Phase" ? FollicularPhase :
+                        currentPhase === "Ovulatory Phase" ? OvulatoryPhase :
+                        currentPhase === "Luteal Phase" ? LutealPhase :
+                        NoDataImage // 👈 Show this if no phase is detected
+                    } 
                     alt="Current Phase" 
                     className="current-phase-image"
                 />
+
+                {/* Invitation message when no data is logged */}
+                {currentPhase === "No phase detected" && (
+                    <div className="no-phase-message">
+                        <p>You haven’t logged your cycle data yet.</p>
+                        <p>Start tracking your cycle to receive accurate phase updates!</p>
+                    </div>
+                )}
             </div>
 
-            {/* Space between Current Phase and Configuration Section */}
-            <div style={{ marginTop: "3rem" }}></div>
-
-            {/* Configure Your Cycle and Calendar Side by Side */}
+            {/* Configure Your Cycle and Calendar */}
             <div className="dashboard-layout">
                 <div className="dashboard-content">
                     <h2>Configure Your Cycle</h2>
@@ -140,17 +151,10 @@ const Dashboard = () => {
                     <button onClick={saveCycleData} className="save-button">Save Data</button>
                 </div>
 
-                {/* Calendar Component */}
                 <div className="calendar-container">
                     <h2>Select when your last period started</h2>
                     <PeriodCalendar phases={phases} onStartDateSelect={setStartDate} />
                 </div>
-            </div>
-
-            {/* Footer Buttons */}
-            <div className="footer-buttons">
-                <button onClick={() => navigate("/home")}>Home</button>
-                <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Back to Top</button>
             </div>
         </div>
     );

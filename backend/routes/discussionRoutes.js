@@ -101,6 +101,9 @@ router.delete("/:id", protect, async (req, res) => {
     const discussion = await Discussion.findById(req.params.id);
     if (!discussion) return res.status(404).json({ message: "Discussion not found" });
 
+    console.log("Requesting user ID:", req.user._id); // ✅ Debugging
+    console.log("Discussion owner ID:", discussion.user.toString()); // ✅ Debugging
+
     if (discussion.user.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: "Unauthorized to delete this discussion" });
     }
@@ -112,6 +115,7 @@ router.delete("/:id", protect, async (req, res) => {
     res.status(500).json({ message: "Error deleting discussion" });
   }
 });
+
 
 // Delete a reply (only if the user owns it)
 router.delete("/:discussionId/reply/:replyId", protect, async (req, res) => {

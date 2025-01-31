@@ -69,6 +69,10 @@ h3 {
 }
 
 .current-phase-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 2.5rem;
   text-align: center;
   background: rgba(255, 255, 255, 0.3);
@@ -85,6 +89,16 @@ h3 {
   max-width: 250px;
   margin-top: 1.5rem;
 }
+
+.no-phase-message {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #4a3a67;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 1rem; /* ✅ Adds spacing between the image and text */
+}
+
 
 .react-calendar {
   width: 100%;

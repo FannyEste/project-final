@@ -85,26 +85,27 @@ const Community = () => {
         }
     };
 
-    const handleDeleteComment = async (discussionId, replyId) => {
+    const deleteReply = async (discussionId, replyId) => {
         try {
             const token = localStorage.getItem("token");
-            if (!token) {
-                alert("You must be logged in to delete a comment.");
-                return;
-            }
-
-            const response = await fetch(`${API_URL}/api/discussions/${discussionId}/reply/${replyId}`, {
-                method: "DELETE",
-                headers: { "Authorization": `Bearer ${token}` },
+            await axios.delete(`${API_URL}/api/discussions/${discussionId}/reply/${replyId}`, {
+                headers: { Authorization: `Bearer ${token}` }
             });
-
-            if (!response.ok) throw new Error("Failed to delete comment");
-
-            fetchDiscussions();
+    
+            // ✅ Remove the reply from the local state
+            setDiscussions(prevDiscussions =>
+                prevDiscussions.map(discussion =>
+                    discussion._id === discussionId
+                        ? { ...discussion, replies: discussion.replies.filter(r => r._id !== replyId) }
+                        : discussion
+                )
+            );
         } catch (error) {
-            console.error("Error deleting comment:", error);
+            console.error("Error deleting reply:", error.response?.data || error);
+            alert(error.response?.data?.message || "Failed to delete reply.");
         }
     };
+    
 
     const handleLike = async (discussionId) => {
         try {
