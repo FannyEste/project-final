@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/authContext"; // Import useAuth hook
-import "./Navbar.css";
+import "./NavBar.css";
 import LoginIcon from "../assets/login-icon.svg"; // Import your custom icon
 
 const Navbar = () => {
