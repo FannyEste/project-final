@@ -9,7 +9,7 @@ import OvulatoryPhase from "../../assets/eggs.svg";
 import FollicularPhase from "../../assets/follicular-phase.svg";
 import LutealPhase from "../../assets/luteal-phase.svg";
 import MenstrualPhase from "../../assets/menstrual-phase.svg";
-import NoDataImage from "../../assets/no-data.svg"; // Placeholder image for no data
+import NoDataImage from "../../assets/hero-test.svg"; // Placeholder image for no data
 import { API_URL } from "../../config";
 
 const Dashboard = () => {
