@@ -10,7 +10,7 @@ const AboutUs = () => {
         <div className="about-image">
           {/* Use direct public path */}
           <img 
-            src="/about-image.jpg" 
+            src="/about-image.jpeg" 
             alt="About Hormonal Heaven" 
             className="about-img" 
             onError={(e) => e.target.src = "https://via.placeholder.com/300"} 
