@@ -199,7 +199,7 @@ const Community = () => {
                                         <span className="comment-name">{reply.name}:</span>
                                         <span className="comment-text">{reply.content}</span>
                                         {reply.user === user?.id && (
-                                            <button className="delete-button" onClick={() => handleDeleteComment(discussion._id, reply._id)}>
+                                            <button className="delete-button" onClick={() => deleteReply(discussion._id, reply._id)}>
                                                 🗑️
                                             </button>
                                         )}
