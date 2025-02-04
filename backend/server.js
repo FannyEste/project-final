@@ -15,7 +15,14 @@ mongoose.Promise = Promise;
 const port = process.env.PORT || 8080;
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://hormonalheaven.netlify.app", // Remove localhost
+    credentials: true, // Allow authentication cookies or headers
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+  })
+);
 app.use(express.json());
 
 // Routes for user-related actions
