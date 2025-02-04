@@ -1,12 +1,6 @@
-/* index.css 
+/* index.css */
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";*/
-
-//@import "tailwindcss";
-
-
+@import "tailwindcss";
 
 /* Your custom global styles can go here */
 body {
