@@ -70,9 +70,9 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (startDate && cycleLength && periodDuration) {
-            const calculatedPhases = calculatePhases(startDate, cycleLength, periodDuration);
-            setPhases(calculatedPhases);
-            determineCurrentPhase(calculatedPhases);
+            const updatedPhases = calculatePhases(startDate, cycleLength, periodDuration);
+            setPhases(updatedPhases);
+            determineCurrentPhase(updatedPhases);
         }
     }, [startDate, cycleLength, periodDuration]);
 
