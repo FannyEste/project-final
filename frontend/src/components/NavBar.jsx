@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/authContext"; // Import useAuth hook
+import { useAuth } from "../hooks/authContext";
 import "./NavBar.css";
 import LoginIcon from "../assets/login-icon.svg"; // Import your custom icon
 
@@ -33,25 +33,33 @@ const Navbar = () => {
     setCyclesDropdownOpen(!cyclesDropdownOpen);
   };
 
-  // 🔹 Scroll to News Section
+  // 🔹 Scroll to News Section (Navigate First If Needed)
   const handleScrollToNews = () => {
-    const newsSection = document.getElementById("news-section");
-    if (newsSection) {
-      newsSection.scrollIntoView({ behavior: "smooth" });
+    if (window.location.pathname !== "/") {
+      navigate("/"); // Navigate to home first
+      setTimeout(() => {
+        const newsSection = document.getElementById("news-section");
+        if (newsSection) {
+          newsSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Wait for page transition before scrolling
+    } else {
+      const newsSection = document.getElementById("news-section");
+      if (newsSection) {
+        newsSection.scrollIntoView({ behavior: "smooth" });
+      }
     }
-    setMenuOpen(false); // Close the menu after clicking
+    setMenuOpen(false);
   };
 
   return (
     <header className="navbar">
-      {/* Hamburger Menu Icon */}
       <div className="hamburger" onClick={toggleMenu}>
         <span className={`line ${menuOpen ? "open" : ""}`}></span>
         <span className={`line ${menuOpen ? "open" : ""}`}></span>
         <span className={`line ${menuOpen ? "open" : ""}`}></span>
       </div>
 
-      {/* Navigation Menu */}
       <nav className={`navbar-menu ${menuOpen ? "open" : ""}`}>
         <Link to="/" className="navbar-link" onClick={() => setMenuOpen(false)}>
           HOME
@@ -80,13 +88,12 @@ const Navbar = () => {
         <Link to="/community" className="navbar-link" onClick={() => setMenuOpen(false)}>
           COMMUNITY
         </Link>
-        {/* 🔹 Click NEWS to scroll instead of navigating */}
+        {/* 🔹 Clicking "News" navigates and scrolls */}
         <span className="navbar-link" onClick={handleScrollToNews}>
           NEWS
         </span>
       </nav>
 
-      {/* Account Section */}
       <div className="navbar-account">
         {user ? (
           <>

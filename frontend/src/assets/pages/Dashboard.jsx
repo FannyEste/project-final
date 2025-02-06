@@ -5,12 +5,14 @@ import PeriodCalendar from "./PeriodCalendar";
 import { calculatePhases } from "../../utils/cycleUtils";
 import axios from "axios";
 import "./Dashboard.css";
+import { API_URL } from "../../config";
+
+// ✅ Import phase images dynamically
 import OvulatoryPhase from "../../assets/eggs.svg";
 import FollicularPhase from "../../assets/follicular-phase.svg";
 import LutealPhase from "../../assets/luteal-phase.svg";
 import MenstrualPhase from "../../assets/menstrual-phase.svg";
 import NoDataImage from "../../assets/hero-test.svg"; // Placeholder image for no data
-import { API_URL } from "../../config";
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -41,8 +43,11 @@ const Dashboard = () => {
                 setStartDate(data.startDate);
                 setPeriodDuration(data.periodDuration);
                 setCycleLength(data.cycleLength);
-                setPhases(data.phases);
-                determineCurrentPhase(data.phases);
+                
+                // ✅ Generate future & past cycles dynamically
+                const generatedPhases = calculatePhases(data.startDate, data.cycleLength, data.periodDuration);
+                setPhases(generatedPhases);
+                determineCurrentPhase(generatedPhases);
             } catch (error) {
                 console.error("Failed to fetch cycle data:", error);
             } finally {
@@ -91,6 +96,15 @@ const Dashboard = () => {
         }
     };
 
+    // ✅ Dynamically assign the correct image for each phase
+    const phaseImages = {
+        "Menstrual Phase": MenstrualPhase,
+        "Follicular Phase": FollicularPhase,
+        "Ovulatory Phase": OvulatoryPhase,
+        "Luteal Phase": LutealPhase,
+        "No phase detected": NoDataImage // Default when no data
+    };
+
     if (loading) return <p>Loading your cycle data...</p>;
 
     return (
@@ -107,15 +121,9 @@ const Dashboard = () => {
                 <p>{currentPhase === "Ovulatory Phase" ? "Ovulation occurs, and fertility is at its peak." : ""}</p>
                 <p>{currentPhase === "Luteal Phase" ? "Your body prepares for a potential pregnancy." : ""}</p>
 
-                {/* Show Image Based on the Phase */}
+                {/* ✅ Fix: Show correct image for each phase */}
                 <img 
-                    src={
-                        currentPhase === "Menstrual Phase" ? MenstrualPhase :
-                        currentPhase === "Follicular Phase" ? FollicularPhase :
-                        currentPhase === "Ovulatory Phase" ? OvulatoryPhase :
-                        currentPhase === "Luteal Phase" ? LutealPhase :
-                        NoDataImage // 👈 Show this if no phase is detected
-                    } 
+                    src={phaseImages[currentPhase]} 
                     alt="Current Phase" 
                     className="current-phase-image"
                 />

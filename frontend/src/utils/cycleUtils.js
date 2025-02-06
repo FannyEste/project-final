@@ -17,11 +17,18 @@ export const calculatePhases = (startDate, cycleLength, periodDuration) => {
 
     let currentStartDate = new Date(startDate);
     const today = new Date(); // Get today's date
+    const pastLimit = new Date();
+    pastLimit.setFullYear(pastLimit.getFullYear() - 2); // Generate past 2 years
     const futureLimit = new Date();
     futureLimit.setFullYear(futureLimit.getFullYear() + 2); // Generate for next 2 years
 
-    // 🔹 Ensure we generate past cycles too
-    while (currentStartDate < futureLimit) {
+    // 🔹 Generate past cycles (going backwards)
+    while (currentStartDate > pastLimit) {
+        currentStartDate.setDate(currentStartDate.getDate() - cycleLength);
+    }
+
+    // 🔹 Generate cycles from the past up to the future
+    while (currentStartDate <= futureLimit) {
         const cycleDays = [];
 
         for (let i = 0; i < cycleLength; i++) {
@@ -41,7 +48,7 @@ export const calculatePhases = (startDate, cycleLength, periodDuration) => {
             }
         }
 
-        console.log(`Cycle generated from ${currentStartDate.toDateString()} to ${cycleDays[cycleLength - 1].toDateString()}`);
+        console.log(`Cycle generated from ${cycleDays[0].toDateString()} to ${cycleDays[cycleLength - 1].toDateString()}`);
 
         // 🔹 Move `currentStartDate` forward by exactly one cycle
         currentStartDate.setDate(currentStartDate.getDate() + cycleLength);
