@@ -4,7 +4,7 @@ import ovulatoryhero from "../../assets/hero-test.svg";
 import recipe1 from "../../assets/recipe1.jpeg";
 import recipe2 from "../../assets/recipe2.jpeg";
 import recipe3 from "../../assets/recipe3.jpeg";
-import exercise1 from "../../assets/exercise1.jpeg";
+import exercise1 from "../../assets/hiit-fol.jpeg";
 import exercise2 from "../../assets/exercise2.jpeg";
 import exercise3 from "../../assets/exercise3.jpeg";
 

@@ -9,10 +9,10 @@ import MenstrualIcon from "../assets/menstrual-icon.svg";
 
 const BoxGrid = () => {
   const phases = [
+    { name: "MENSTRUAL", link: "/cycles/menstrual", color: "#B49DD9", icon: MenstrualIcon },
     { name: "FOLLICULAR", link: "/cycles/follicular", color: "#E5D4F6", icon: FollicularIcon },
     { name: "OVULATORY", link: "/cycles/ovulatory", color: "#FFD59E", icon: OvulatoryIcon },
     { name: "LUTEAL", link: "/cycles/luteal", color: "#F15A28", icon: LutealIcon },
-    { name: "MENSTRUAL", link: "/cycles/menstrual", color: "#B49DD9", icon: MenstrualIcon },
   ];
 
   return (
