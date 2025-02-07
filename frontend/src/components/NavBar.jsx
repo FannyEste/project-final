@@ -70,6 +70,9 @@ const Navbar = () => {
           </span>
           {cyclesDropdownOpen && (
             <div className="dropdown-menu">
+              <Link to="/cycles/menstrual" className="dropdown-item" onClick={() => setMenuOpen(false)}>
+                MENSTRUAL
+              </Link>
               <Link to="/cycles/follicular" className="dropdown-item" onClick={() => setMenuOpen(false)}>
                 FOLLICULAR
               </Link>
@@ -78,9 +81,6 @@ const Navbar = () => {
               </Link>
               <Link to="/cycles/luteal" className="dropdown-item" onClick={() => setMenuOpen(false)}>
                 LUTEAL
-              </Link>
-              <Link to="/cycles/menstrual" className="dropdown-item" onClick={() => setMenuOpen(false)}>
-                MENSTRUAL
               </Link>
             </div>
           )}
