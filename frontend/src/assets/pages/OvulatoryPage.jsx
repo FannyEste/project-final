@@ -12,7 +12,7 @@ const Ovulatory = () => {
   return (
     <div className="cycle-page">
       <div className="cycles-hero-section">
-        <img src={ovulatoryhero} alt="Ovulatory Phase" className="hero-image" />
+        <img src={ovulatoryhero} alt="Ovulatory Phase" className="cycles-hero-image" />
         <div className="hero-title">
           <h1>OVULATORY</h1>
         </div>

@@ -12,7 +12,7 @@ const Menstrual = () => {
   return (
     <div className="cycle-page">
       <div className="cycles-hero-section">
-        <img src={menstrualhero} alt="Menstrual Phase" className="hero-image" />
+        <img src={menstrualhero} alt="Menstrual Phase" className="cycles-hero-image" />
         <div className="hero-title">
           <h1>MENSTRUAL</h1>
         </div>

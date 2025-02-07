@@ -13,7 +13,7 @@ const Follicular = () => {
     <div className="cycle-page">
       {/* Hero Section */}
       <div className="cycles-hero-section">
-        <img src={follicularhero} alt="Follicular Phase" className="hero-image" />
+        <img src={follicularhero} alt="Follicular Phase" className="cycles-hero-image" />
         <div className="hero-title">
           <h1>FOLLICULAR</h1>
         </div>

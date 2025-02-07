@@ -12,7 +12,7 @@ const Luteal = () => {
   return (
     <div className="cycle-page">
       <div className="cycles-hero-section">
-        <img src={lutealhero} alt="Luteal Phase" className="hero-image" />
+        <img src={lutealhero} alt="Luteal Phase" className="cycles-hero-image" />
         <div className="hero-title">
           <h1>LUTEAL</h1>
         </div>

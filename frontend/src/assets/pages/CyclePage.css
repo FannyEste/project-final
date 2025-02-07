@@ -11,12 +11,14 @@
   position: relative;
   width: 100%;
   height: 300px;
+  overflow: hidden;
 }
 
 .cycles-hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .cycles-hero-title {
@@ -27,6 +29,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  z-index: 2;
 }
 
 /* Description Section */
@@ -71,15 +74,16 @@
 
 .food-images {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   margin-top: 2.5rem;
 }
 
 .food-image {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
   border-radius: 10px;
 }
 
@@ -188,13 +192,55 @@
   color: white;
 }
 
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+  /* Hero Title Scaling */
+  .cycles-hero-title {
+    font-size: 1.8rem;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  /* Food Images Responsive */
+  .food-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .food-image {
+    max-width: 200px;
+  }
+
+  /* Exercise Section Responsive */
   .exercise-item {
     flex-direction: column;
     text-align: center;
+    gap: 2rem;
+    width: 100%;
   }
+
+  .exercise-image {
+    width: 80%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+  }
+
   .exercise-text {
     padding-left: 0;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  /* Footer Buttons Responsive */
+  .footer-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-buttons button {
+    width: 80%;
+    text-align: center;
   }
 }
