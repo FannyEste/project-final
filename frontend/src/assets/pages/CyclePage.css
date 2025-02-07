@@ -85,6 +85,9 @@
   max-width: 250px;
   height: auto;
   border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1; /* Ensures images remain square */
+  transform: rotate(0deg); /* Prevent unintended rotation */
 }
 
 /* Music Section */
@@ -217,6 +220,7 @@
 
   .food-image {
     max-width: 200px;
+    aspect-ratio: 1 / 1; /* Ensures consistency across devices */
   }
 
   /* Exercise Section Responsive */
