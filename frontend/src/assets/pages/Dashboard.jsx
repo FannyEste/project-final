@@ -32,43 +32,57 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchCycleData = async () => {
+            console.log("Fetching cycle data...");
+    
             if (!user) {
                 console.warn("User not available yet, delaying fetch...");
                 return;
             }
-
+    
             const token = localStorage.getItem("token");
+            console.log("Token at fetch start:", token);
+    
             if (!token) {
-                console.error("No auth token found, cannot fetch cycle data.");
+                console.warn("No token found, skipping fetch.");
                 return;
             }
+    
             try {
-                const token = localStorage.getItem("token");
+                console.log("Sending API request with token:", token);
                 const response = await axios.get(`${API_URL}/api/dashboard`, {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: { Authorization: `Bearer ${token}` },
                 });
+    
+                console.log("API response received:", response.data);
+    
                 const data = response.data;
-
-                setStartDate(data.startDate);
                 setPeriodDuration(data.periodDuration);
                 setCycleLength(data.cycleLength);
-
+    
                 const initialStartDate = data.startDate ? new Date(data.startDate) : new Date();
                 setStartDate(initialStartDate);
-                
-                // Generate future & past cycles dynamically
-                const generatedPhases = calculatePhases(data.startDate, data.cycleLength, data.periodDuration);
+    
+                const generatedPhases = calculatePhases(initialStartDate, data.cycleLength, data.periodDuration);
                 setPhases(generatedPhases);
                 determineCurrentPhase(generatedPhases);
             } catch (error) {
                 console.error("Failed to fetch cycle data:", error);
+    
+                if (error.response && error.response.status === 401) {
+                    console.warn("Token might be invalid. Checking further...");
+                    console.log("Token in storage before refresh attempt:", localStorage.getItem("token"));
+                }
             } finally {
                 setLoading(false);
             }
         };
-
+    
+        console.log("Dashboard loaded. Checking user:", user);
+    
         if (user) {
-            setTimeout(fetchCycleData, 300); // ✅ Delay fetch slightly to ensure token is ready
+            fetchCycleData();
+        } else {
+            console.log("User not yet available, fetch will wait.");
         }
     }, [user]);
 
