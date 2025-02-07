@@ -110,8 +110,8 @@
 
 .spotify-container iframe {
   width: 100%;
-  max-width: 300px; /* Prevents iframe from stretching too wide */
-  min-width: 250px; /* Ensures it never gets smaller than 250px */
+  max-width: 800px; /* Prevents iframe from stretching too wide */
+  min-width: 300px; /* Ensures it never gets smaller than 250px */
   height: 180px; /* Maintains functional height */
   border-radius: 8px; /* Optional: Rounded corners for a cleaner look */
 }
