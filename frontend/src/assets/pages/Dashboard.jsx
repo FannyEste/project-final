@@ -31,21 +31,29 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!user) return; // Ensure user exists before running
+    
+        const token = localStorage.getItem("token");
+        if (!token) {
+            console.error("No auth token found, cannot fetch cycle data.");
+            return;
+        }
+    
         const fetchCycleData = async () => {
-            if (!user) return;
             try {
-                const token = localStorage.getItem("token");
                 const response = await axios.get(`${API_URL}/api/dashboard`, {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: { Authorization: `Bearer ${token}` },
                 });
+    
                 const data = response.data;
-
-                setStartDate(data.startDate);
                 setPeriodDuration(data.periodDuration);
                 setCycleLength(data.cycleLength);
-                
-                // Generate future & past cycles dynamically
-                const generatedPhases = calculatePhases(data.startDate, data.cycleLength, data.periodDuration);
+    
+                let initialStartDate = data.startDate ? new Date(data.startDate) : new Date();
+                setStartDate(initialStartDate);
+    
+                // ✅ Simulate clicking today’s date automatically
+                const generatedPhases = calculatePhases(initialStartDate, data.cycleLength, data.periodDuration);
                 setPhases(generatedPhases);
                 determineCurrentPhase(generatedPhases);
             } catch (error) {
@@ -54,11 +62,9 @@ const Dashboard = () => {
                 setLoading(false);
             }
         };
-
-        if (user && localStorage.getItem("token")) {
-            fetchCycleData();
-        }
-    }, [user]);
+    
+        fetchCycleData();
+    }, [user]); // Runs when user changes
 
     const saveCycleData = async () => {
         try {
