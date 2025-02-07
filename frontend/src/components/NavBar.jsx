@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/authContext";
 import "./NavBar.css";
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [cyclesDropdownOpen, setCyclesDropdownOpen] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [scrollToNews, setScrollToNews] = useState(false); // Track NEWS click intent
 
   const handleAccountClick = () => {
     if (user) {
@@ -36,21 +37,29 @@ const Navbar = () => {
   // 🔹 Scroll to News Section (Navigate First If Needed)
   const handleScrollToNews = () => {
     if (window.location.pathname !== "/") {
-      navigate("/"); // Navigate to home first
-      setTimeout(() => {
-        const newsSection = document.getElementById("news-section");
-        if (newsSection) {
-          newsSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 300); // Wait for page transition before scrolling
+      setScrollToNews(true); // Mark intent to scroll
+      navigate("/"); // Navigate to home
     } else {
-      const newsSection = document.getElementById("news-section");
-      if (newsSection) {
-        newsSection.scrollIntoView({ behavior: "smooth" });
-      }
+      scrollToNewsSection(); // Scroll immediately if already on home
     }
     setMenuOpen(false);
   };
+
+  // 🔹 Scroll to News Section
+  const scrollToNewsSection = () => {
+    const newsSection = document.getElementById("news-section");
+    if (newsSection) {
+      newsSection.scrollIntoView({ behavior: "smooth" });
+      setScrollToNews(false); // Reset intent after scrolling
+    }
+  };
+
+  // 🔹 After navigation, scroll to NEWS if needed
+  useEffect(() => {
+    if (scrollToNews && window.location.pathname === "/") {
+      setTimeout(scrollToNewsSection, 500); // Wait to ensure page is loaded before scrolling
+    }
+  }, [scrollToNews, window.location.pathname]);
 
   return (
     <header className="navbar">
