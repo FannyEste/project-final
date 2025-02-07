@@ -44,7 +44,7 @@ const Dashboard = () => {
                 setPeriodDuration(data.periodDuration);
                 setCycleLength(data.cycleLength);
                 
-                // ✅ Generate future & past cycles dynamically
+                // Generate future & past cycles dynamically
                 const generatedPhases = calculatePhases(data.startDate, data.cycleLength, data.periodDuration);
                 setPhases(generatedPhases);
                 determineCurrentPhase(generatedPhases);
@@ -55,7 +55,9 @@ const Dashboard = () => {
             }
         };
 
-        fetchCycleData();
+        if (user && localStorage.getItem("token")) {
+            fetchCycleData();
+        }
     }, [user]);
 
     const saveCycleData = async () => {
