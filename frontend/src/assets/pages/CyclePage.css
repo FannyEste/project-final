@@ -102,11 +102,18 @@
 
 .spotify-container {
   display: flex;
-  min-width: 250px;
   justify-content: center;
   align-items: center;
   margin: 40px auto;
   padding: 30px;
+}
+
+.spotify-container iframe {
+  width: 100%;
+  max-width: 300px; /* Prevents iframe from stretching too wide */
+  min-width: 250px; /* Ensures it never gets smaller than 250px */
+  height: 180px; /* Maintains functional height */
+  border-radius: 8px; /* Optional: Rounded corners for a cleaner look */
 }
 
 /* Exercise Section */
