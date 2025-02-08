@@ -207,16 +207,17 @@ h3 {
   .dashboard-title {
     font-size: 2rem;
   }
-
-  @media (max-width: 500px) {
-    .react-calendar {
-      width: 90%;
-      min-width: 250px; /* ✅ Ensures it doesn't shrink too much */
-    }
-  
-    .react-calendar__tile {
-      max-width: 35px;
-      height: 35px;
-      font-size: 0.9rem; /* ✅ Slightly reduce text size */
-    }
 }
+
+@media (max-width: 500px) {
+  .react-calendar {
+    width: 90%;
+    min-width: 250px; /* ✅ Ensures it doesn't shrink too much */
+  }
+
+  .react-calendar__tile {
+    max-width: 35px;
+    height: 35px;
+    font-size: 0.9rem; /* ✅ Slightly reduce text size */
+  }
+
