@@ -32,15 +32,12 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchCycleData = async () => {
-            console.log("Fetching cycle data...");
-    
             if (!user) {
                 console.warn("User not available yet, delaying fetch...");
                 return;
             }
     
-            const token = localStorage.getItem("token");
-            console.log("Token at fetch start:", token);
+            let token = localStorage.getItem("token");
     
             if (!token) {
                 console.warn("No token found, skipping fetch.");
@@ -48,12 +45,10 @@ const Dashboard = () => {
             }
     
             try {
-                console.log("Sending API request with token:", token);
+                console.log("Fetching cycle data with token:", token);
                 const response = await axios.get(`${API_URL}/api/dashboard`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-    
-                console.log("API response received:", response.data);
     
                 const data = response.data;
                 setPeriodDuration(data.periodDuration);
@@ -69,20 +64,20 @@ const Dashboard = () => {
                 console.error("Failed to fetch cycle data:", error);
     
                 if (error.response && error.response.status === 401) {
-                    console.warn("Token might be invalid. Checking further...");
-                    console.log("Token in storage before refresh attempt:", localStorage.getItem("token"));
+                    console.warn("Token expired. Attempting to refresh...");
+                    
+                    const newToken = await refreshToken();
+                    if (newToken) {
+                        await fetchCycleData(); // 🔹 Retry API call with new token
+                    }
                 }
             } finally {
                 setLoading(false);
             }
         };
     
-        console.log("Dashboard loaded. Checking user:", user);
-    
         if (user) {
             fetchCycleData();
-        } else {
-            console.log("User not yet available, fetch will wait.");
         }
     }, [user]);
 
