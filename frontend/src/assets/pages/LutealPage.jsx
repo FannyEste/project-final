@@ -39,6 +39,22 @@ const Luteal = () => {
         </div>
       </div>
 
+      {/* Music Section */}
+      <div className="music-section">
+        <h3>CURATED PLAYLIST FOR YOUR FOLLICULAR PHASE</h3>
+        <div className="spotify-container centered">
+          <iframe
+            src="https://open.spotify.com/embed/playlist/11DVNTiYQqCmSwY7pGZfTu?si=1OYalZktT9eHqxjHtUWr0g"
+            width="80%"
+            height="180"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Spotify Playlist"
+          ></iframe>
+        </div>
+      </div>
+
       <div className="exercise-section">
         <h3>EXERCISES FOR LUTEAL PHASE</h3>
         <p>Focus on lower-impact workouts to align with your body’s natural rhythm.</p>
