@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/authContext";
-import HeroImage from "../../assets/hero-test.svg";
+// Removed the HeroImage import since it’s no longer used
 import BoxGrid from "../../components/BoxGrid";
 import NewsSection from "../../components/NewsSection";
 import Footer from "../../components/Footer";
@@ -24,7 +24,6 @@ const LandingPage = () => {
     <div>
       {/* Hero Section */}
       <div className="hero-section">
-        <img src={HeroImage} alt="Hero" className="hero-image" />
         <div className="hero-text">
           <h1 className="hero-title">
             WELCOME TO <span className="hero-highlight">HORMONAL HEAVEN</span>
@@ -41,13 +40,13 @@ const LandingPage = () => {
         <BoxGrid />
       </div>
 
-      {/* 🔹 News Section (Now Before About Us) */}
+      {/* News Section */}
       <NewsSection />
 
-      {/* 🔹 About Us Section (Moved to Before Footer) */}
+      {/* About Us Section */}
       <AboutUs />
 
-      {/* 🔹 Footer (Now After About Us) */}
+      {/* Footer */}
       <Footer />
     </div>
   );
