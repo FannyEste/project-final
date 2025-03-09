@@ -26,7 +26,8 @@ const LandingPage = () => {
       <div className="hero-section">
         <div className="hero-text">
           <h1 className="hero-title">
-            WELCOME TO <span className="hero-highlight">HORMONAL HEAVEN</span>
+            WELCOME TO <br />
+             <span className="hero-highlight">HORMONAL HEAVEN</span>
           </h1>
           <p className="hero-subtitle">SAFE SPACE. MESSY THOUGHTS. REAL TALK.</p>
           <button onClick={handleGetStarted} className="hero-button">

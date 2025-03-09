@@ -6,24 +6,26 @@ import recipe3 from "../../assets/recipe3.jpeg";
 import exercise1 from "../../assets/hiit-fol.jpeg";
 import exercise2 from "../../assets/exercise2.jpeg";
 import exercise3 from "../../assets/exercise3.jpeg";
+import ovulatoryPhaseImg from "../../assets/eggs.svg"; // New image import
 
 const Ovulatory = () => {
   return (
     <div className="cycle-page">
+      {/* Hero Section with Image */}
       <div className="cycles-hero-section">
-        <div className="hero-title">
-          <h1>OVULATORY</h1>
+        <div className="hero-text">
+          <h2>Ovulatory Phase (Days 15-17)</h2>
+          <p>
+            This is your peak! Your confidence is high, and you're feeling social and magnetic. 
+            It's a great time for important meetings, social gatherings, and high-energy workouts.
+          </p>
+        </div>
+        <div className="hero-image">
+          <img src={ovulatoryPhaseImg} alt="Ovulatory Phase Illustration" />
         </div>
       </div>
 
-      <div className="description-section">
-        <h2>Ovulatory Phase (Days 15-17)</h2>
-        <p>
-          This is your peak! Your confidence is high, and you're feeling social and magnetic. 
-          It's a great time for important meetings, social gatherings, and high-energy workouts.
-        </p>
-      </div>
-
+      {/* Food Section */}
       <div className="food-section">
         <h3>FOOD FOR OVULATORY PHASE</h3>
         <p>
@@ -39,8 +41,8 @@ const Ovulatory = () => {
 
       {/* Music Section */}
       <div className="music-section">
-        <h3>CURATED PLAYLIST FOR YOUR FOLLICULAR PHASE</h3>
-        <div className="spotify-container centered">
+        <h3>CURATED PLAYLIST FOR YOUR OVULATORY PHASE</h3>
+        <div className="spotify-container">
           <iframe
             src="https://open.spotify.com/embed/playlist/11DVNTiYQqCmSwY7pGZfTu?si=1OYalZktT9eHqxjHtUWr0g"
             width="80%"
@@ -53,6 +55,7 @@ const Ovulatory = () => {
         </div>
       </div>
 
+      {/* Exercise Section */}
       <div className="exercise-section">
         <h3>EXERCISES FOR OVULATORY PHASE</h3>
         <p>Your energy is at its highest, so take advantage of high-intensity workouts.</p>
@@ -81,6 +84,7 @@ const Ovulatory = () => {
         </div>
       </div>
 
+      {/* Footer Section */}
       <footer className="footer">
         <div className="footer-buttons">
           <button onClick={() => window.location.href = "/"}>Home</button>

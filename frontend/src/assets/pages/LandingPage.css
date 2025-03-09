@@ -1,4 +1,4 @@
-/* Hero Section */
+/* Hero Section (Landing Page Only) */
 .hero-section {
   position: relative;
   width: 100%;
@@ -9,11 +9,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f2f1d8; /* New background color */
+  background-color: #f2f1d8; /* Keeps the background */
 }
 
-/* Removed .hero-image styles as the image is no longer used */
-
+/* Hero Text Container */
 .hero-text {
   position: relative;
   text-align: center;
@@ -23,27 +22,38 @@
   justify-content: center;
   width: 100%;
   z-index: 2;
-  color: #D5C1DE;
+  color: #66489d;
   padding: 2rem;
 }
 
-/* Hero Title  */
+/* Hero Title (Now Split into Two Lines) */
 .hero-text h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #D5C1DE;
+  font-size: 3rem; /* Adjusted for better balance */
+  font-weight: 800;
+  line-height: 1.2; /* Keeps proper spacing between lines */
+  margin-bottom: 1.2rem;
+  color: #66489d;
+  text-align: center;
 }
 
-/* Hero Subtitle  */
-.hero-text p {
-  font-size: 1.1rem;
+/* Hero Highlighted Text (Hormonal Heaven) */
+.hero-highlight {
+  display: block; /* Ensures it stays on a new line */
+  font-size: 3rem; /* Slightly larger to make it pop */
+  font-weight: 800;
+  color: #66489d;
+}
+
+/* Hero Subtitle (Ensure It's in One Line) */
+.hero-subtitle {
+  font-size: 1.3rem; /* Adjusted size */
   font-weight: 400;
   margin-bottom: 2rem;
-  color: white;
+  color: #D5C1DE;
+  white-space: nowrap; /* Ensures it stays on one line */
 }
 
-/* Hero Button  */
+/* Hero Button */
 .hero-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -62,22 +72,27 @@
   color: white;
 }
 
-/* Responsive Adjustments  */
+/* ✅ Responsive Adjustments */
 @media (max-width: 768px) {
   .hero-section {
-      height: 60vh;
+    height: 60vh;
   }
-  
+
   .hero-text {
-      padding: 1.5rem;
+    padding: 1.5rem;
   }
 
   .hero-text h1 {
     font-size: 2rem;
   }
 
-  .hero-text p {
+  .hero-highlight {
+    font-size: 2.4rem; /* Keeps the "Hormonal Heaven" prominent */
+  }
+
+  .hero-subtitle {
     font-size: 1rem;
+    white-space: normal; /* Allows wrapping on smaller screens */
   }
 
   .hero-button {

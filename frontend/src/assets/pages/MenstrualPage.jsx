@@ -6,29 +6,29 @@ import recipe3 from "../../assets/recipe3.jpeg";
 import exercise1 from "../../assets/exercise1.jpeg";
 import exercise2 from "../../assets/exercise2.jpeg";
 import exercise3 from "../../assets/exercise3.jpeg";
+import menstrualPhaseImg from "../../assets/menstrual-phase.svg"; // New image import
 
 const Menstrual = () => {
   return (
     <div className="cycle-page">
+      {/* Hero Section with Image */}
       <div className="cycles-hero-section">
-        <div className="hero-title">
-          <h1>MENSTRUAL</h1>
+        <div className="hero-text">
+          <h2>Menstrual Phase (Days 1-5)</h2>
+          <p>
+            Your body needs rest and recovery. This is the time for reflection, relaxation, and 
+            listening to your body's needs.
+          </p>
+        </div>
+        <div className="hero-image">
+          <img src={menstrualPhaseImg} alt="Menstrual Phase Illustration" />
         </div>
       </div>
 
-      <div className="description-section">
-        <h2>Menstrual Phase (Days 1-5)</h2>
-        <p>
-          Your body needs rest and recovery. This is the time for reflection, relaxation, and 
-          listening to your body's needs.
-        </p>
-      </div>
-
+      {/* Food Section */}
       <div className="food-section">
         <h3>FOOD FOR MENSTRUAL PHASE</h3>
-        <p>
-          Iron-rich foods like spinach, lentils, and hearty soups to replenish lost nutrients.
-        </p>
+        <p>Iron-rich foods like spinach, lentils, and hearty soups to replenish lost nutrients.</p>
         <div className="food-images">
           <img src={recipe1} alt="Recipe 1" className="food-image" />
           <img src={recipe2} alt="Recipe 2" className="food-image" />
@@ -38,8 +38,8 @@ const Menstrual = () => {
 
       {/* Music Section */}
       <div className="music-section">
-        <h3>CURATED PLAYLIST FOR YOUR FOLLICULAR PHASE</h3>
-        <div className="spotify-container centered">
+        <h3>CURATED PLAYLIST FOR YOUR MENSTRUAL PHASE</h3>
+        <div className="spotify-container">
           <iframe
             src="https://open.spotify.com/embed/playlist/11DVNTiYQqCmSwY7pGZfTu?si=1OYalZktT9eHqxjHtUWr0g"
             width="80%"
@@ -52,6 +52,7 @@ const Menstrual = () => {
         </div>
       </div>
 
+      {/* Exercise Section */}
       <div className="exercise-section">
         <h3>EXERCISES FOR MENSTRUAL PHASE</h3>
         <p>Gentle movements help reduce cramps and improve circulation.</p>
@@ -80,6 +81,7 @@ const Menstrual = () => {
         </div>
       </div>
 
+      {/* Footer Section */}
       <footer className="footer">
         <div className="footer-buttons">
           <button onClick={() => window.location.href = "/"}>Home</button>

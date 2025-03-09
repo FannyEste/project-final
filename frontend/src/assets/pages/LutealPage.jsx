@@ -6,24 +6,26 @@ import recipe3 from "../../assets/recipe3.jpeg";
 import exercise1 from "../../assets/exercise1.jpeg";
 import exercise2 from "../../assets/exercise2.jpeg";
 import exercise3 from "../../assets/exercise3.jpeg";
+import lutealPhaseImg from "../../assets/luteal-phase.svg"; // Import the new image
 
 const Luteal = () => {
   return (
     <div className="cycle-page">
+      {/* Hero Section (With Text Left & Circular Image Right) */}
       <div className="cycles-hero-section">
-        <div className="hero-title">
-          <h1>LUTEAL</h1>
+        <div className="hero-text">
+          <h2>Luteal Phase (Days 18-28)</h2>
+          <p>
+            Your energy starts to slow down. This is a great time to focus on self-care, 
+            organization, and gentler workouts. You may feel the need for more rest.
+          </p>
+        </div>
+        <div className="hero-image">
+          <img src={lutealPhaseImg} alt="Luteal Phase Illustration" />
         </div>
       </div>
 
-      <div className="description-section">
-        <h2>Luteal Phase (Days 18-28)</h2>
-        <p>
-          Your energy starts to slow down. This is a great time to focus on self-care, 
-          organization, and gentler workouts. You may feel the need for more rest.
-        </p>
-      </div>
-
+      {/* Food Section */}
       <div className="food-section">
         <h3>FOOD FOR LUTEAL PHASE</h3>
         <p>
@@ -39,8 +41,8 @@ const Luteal = () => {
 
       {/* Music Section */}
       <div className="music-section">
-        <h3>CURATED PLAYLIST FOR YOUR FOLLICULAR PHASE</h3>
-        <div className="spotify-container centered">
+        <h3>CURATED PLAYLIST FOR YOUR LUTEAL PHASE</h3>
+        <div className="spotify-container">
           <iframe
             src="https://open.spotify.com/embed/playlist/11DVNTiYQqCmSwY7pGZfTu?si=1OYalZktT9eHqxjHtUWr0g"
             width="80%"
@@ -53,6 +55,7 @@ const Luteal = () => {
         </div>
       </div>
 
+      {/* Exercise Section */}
       <div className="exercise-section">
         <h3>EXERCISES FOR LUTEAL PHASE</h3>
         <p>Focus on lower-impact workouts to align with your body’s natural rhythm.</p>
@@ -81,6 +84,7 @@ const Luteal = () => {
         </div>
       </div>
 
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-buttons">
           <button onClick={() => window.location.href = "/"}>Home</button>
