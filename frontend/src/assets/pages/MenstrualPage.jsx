@@ -1,6 +1,5 @@
 import React from "react";
 import "./CyclePage.css";
-import menstrualhero from "../../assets/hero-test.svg";
 import recipe1 from "../../assets/recipe1.jpeg";
 import recipe2 from "../../assets/recipe2.jpeg";
 import recipe3 from "../../assets/recipe3.jpeg";
@@ -12,7 +11,6 @@ const Menstrual = () => {
   return (
     <div className="cycle-page">
       <div className="cycles-hero-section">
-        <img src={menstrualhero} alt="Menstrual Phase" className="cycles-hero-image" />
         <div className="hero-title">
           <h1>MENSTRUAL</h1>
         </div>
