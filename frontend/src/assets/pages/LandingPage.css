@@ -23,7 +23,7 @@
   justify-content: center;
   width: 100%;
   z-index: 2;
-  color: white;
+  color: #D5C1DE;
   padding: 2rem;
 }
 
@@ -32,7 +32,7 @@
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: white;
+  color: #D5C1DE;
 }
 
 /* Hero Subtitle  */
